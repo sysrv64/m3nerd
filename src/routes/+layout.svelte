@@ -137,7 +137,7 @@
 		gap: 16px;
 		height: 64px;
 		padding-inline: var(--m3-layout-gutter);
-		background: light-dark(#fef7ff, #1d1b20);
+		background: var(--m3-sys-surface-container-low);
 		color: var(--m3-sys-on-surface);
 		box-shadow: var(--m3-sys-elevation-2);
 	}

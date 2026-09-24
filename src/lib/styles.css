@@ -1,7 +1,4 @@
-@layer m3nerd.tokens {
-	@import './tokens.css';
-	@import './motion.css';
-	@import './adaptive.css';
-}
-
-@import './base.css';
+@import './styles/tokens.css';
+@import './styles/motion.css';
+@import './styles/adaptive.css';
+@import './styles/base.css';

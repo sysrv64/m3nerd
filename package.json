@@ -41,6 +41,17 @@
       "css": "./package/styles.css",
       "default": "./package/styles.css"
     },
+    "./imgui": {
+      "types": "./package/imgui/index.d.ts",
+      "svelte": "./package/imgui/index.js",
+      "import": "./package/imgui/index.js",
+      "default": "./package/imgui/index.js"
+    },
+    "./imgui/styles.css": {
+      "style": "./package/imgui/styles.css",
+      "css": "./package/imgui/styles.css",
+      "default": "./package/imgui/styles.css"
+    },
     "./package.json": "./package.json"
   },
   "sideEffects": [

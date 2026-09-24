@@ -1,0 +1,147 @@
+/*
+ * ImGUI tokens — Dear ImGui StyleColorsDark + classic metrics, glass panels.
+ * Separate namespace (--ig-*) from Material (--m3-*). DOM+CSS only, no canvas.
+ */
+
+.ig-root {
+	/* Font — classic ImGui pixel feel */
+	--ig-font: 'Pixelify Sans', 'Silkscreen', ui-monospace, 'Cascadia Mono', Menlo, monospace;
+	--ig-font-mono: 'VT323', ui-monospace, 'Cascadia Mono', Menlo, monospace;
+	--ig-font-size: 13px;
+	--ig-font-size-sm: 12px;
+	--ig-font-size-lg: 16px;
+	--ig-line-height: 1.35;
+
+	/* Style metrics (ImGuiStyle defaults, 1.93) */
+	--ig-window-padding: 8px;
+	--ig-frame-padding-x: 4px;
+	--ig-frame-padding-y: 3px;
+	--ig-item-spacing-x: 8px;
+	--ig-item-spacing-y: 4px;
+	--ig-item-inner-spacing: 4px;
+	--ig-indent: 21px;
+	--ig-scrollbar-size: 14px;
+	--ig-grab-min-size: 12px;
+	--ig-window-rounding: 0px;
+	--ig-frame-rounding: 0px;
+	--ig-grab-rounding: 0px;
+	--ig-tab-rounding: 5px;
+	--ig-border-size: 1px;
+	--ig-window-min-size: 32px;
+	--ig-touch-extra: 0px;
+	--ig-hover-delay: 150ms;
+
+	/* Derived */
+	--ig-frame-height: calc(var(--ig-font-size) + var(--ig-frame-padding-y) * 2);
+	--ig-title-height: var(--ig-frame-height);
+
+	/* StyleColorsDark */
+	--ig-text: #ffffff;
+	--ig-text-disabled: #808080;
+	--ig-window-bg: rgb(15 15 15 / 0.94);
+	--ig-child-bg: transparent;
+	--ig-popup-bg: rgb(20 20 20 / 0.94);
+	--ig-border: rgb(110 110 128 / 0.5);
+	--ig-border-shadow: transparent;
+	--ig-frame-bg: rgb(41 74 122 / 0.54);
+	--ig-frame-bg-hovered: rgb(66 150 250 / 0.4);
+	--ig-frame-bg-active: rgb(66 150 250 / 0.67);
+	--ig-title-bg: #0a0a0a;
+	--ig-title-bg-active: #294a7a;
+	--ig-title-bg-collapsed: rgb(0 0 0 / 0.51);
+	--ig-menu-bar-bg: #242424;
+	--ig-scrollbar-bg: rgb(5 5 5 / 0.53);
+	--ig-scrollbar-grab: #4f4f4f;
+	--ig-scrollbar-grab-hovered: #6a6a6a;
+	--ig-scrollbar-grab-active: #3d85e0;
+	--ig-check-mark: #4296fa;
+	--ig-slider-grab: #3d85e0;
+	--ig-slider-grab-active: #4296fa;
+	--ig-button: rgb(66 150 250 / 0.4);
+	--ig-button-hovered: #4296fa;
+	--ig-button-active: #0f87fa;
+	--ig-header: rgb(66 150 250 / 0.31);
+	--ig-header-hovered: rgb(66 150 250 / 0.8);
+	--ig-header-active: #4296fa;
+	--ig-separator: var(--ig-border);
+	--ig-separator-hovered: rgb(26 102 191 / 0.78);
+	--ig-separator-active: #1a66bf;
+	--ig-resize-grip: rgb(66 150 250 / 0.2);
+	--ig-tab: rgb(41 74 122 / 0.54);
+	--ig-tab-hovered: rgb(66 150 250 / 0.4);
+	--ig-tab-active: #294a7a;
+	--ig-tab-unactive: rgb(20 20 20 / 0.6);
+	--ig-plot-histogram: #e6b200;
+	--ig-table-header-bg: #303033;
+	--ig-text-selected-bg: rgb(66 150 250 / 0.35);
+	--ig-nav-cursor: #4296fa;
+	--ig-modal-dim: rgb(204 204 204 / 0.35);
+	--ig-drag-drop-target: rgb(255 255 0 / 0.9);
+	--ig-disabled-alpha: 0.6;
+
+	/* Glass (simple, performant) */
+	--ig-glass-blur: 12px;
+	--ig-glass-highlight: rgb(255 255 255 / 0.1);
+	--ig-glass-hairline: rgb(255 255 255 / 0.14);
+	--ig-glass-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+
+	/* Mobile / coarse pointer — larger hit targets */
+	--ig-hit-min: 32px;
+}
+
+/* Coarse pointer (phone/tablet): ImGui density stays, hits grow */
+@media (pointer: coarse) {
+	.ig-root {
+		--ig-touch-extra: 6px;
+		--ig-hit-min: 44px;
+		--ig-font-size: 14px;
+		--ig-frame-padding-y: 6px;
+		--ig-item-spacing-y: 6px;
+	}
+}
+
+/* Glass panel base — solid fallback first */
+.ig-glass {
+	background: var(--ig-window-bg);
+	border: var(--ig-border-size) solid var(--ig-border);
+	border-radius: var(--ig-window-rounding);
+	box-shadow: var(--ig-glass-shadow), inset 0 1px 0 var(--ig-glass-highlight);
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+	.ig-glass {
+		background: rgb(15 15 15 / 0.72);
+		-webkit-backdrop-filter: blur(var(--ig-glass-blur)) saturate(140%);
+		backdrop-filter: blur(var(--ig-glass-blur)) saturate(140%);
+	}
+}
+
+@media (prefers-reduced-transparency: reduce) {
+	.ig-glass {
+		-webkit-backdrop-filter: none;
+		backdrop-filter: none;
+		background: rgb(15 15 15 / 0.96);
+	}
+}
+
+.ig-root {
+	font-family: var(--ig-font);
+	font-size: var(--ig-font-size);
+	line-height: var(--ig-line-height);
+	color: var(--ig-text);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: geometricPrecision;
+	letter-spacing: 0;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.ig-root *,
+.ig-root *::before,
+.ig-root *::after {
+	box-sizing: border-box;
+}
+
+.ig-focus:focus-visible {
+	outline: 1px solid var(--ig-nav-cursor);
+	outline-offset: 1px;
+}

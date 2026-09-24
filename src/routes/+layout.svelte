@@ -36,7 +36,8 @@
 	const nav = [
 		{ href: `${base}/`, label: 'Home', icon: 'home' },
 		{ href: `${base}/docs/`, label: 'Docs', icon: 'menu_book' },
-		{ href: `${base}/components/`, label: 'Components', icon: 'widgets' }
+		{ href: `${base}/components/`, label: 'Components', icon: 'widgets' },
+		{ href: `${base}/imgui/`, label: 'ImGUI', icon: 'dashboard' }
 	];
 
 	const pathname = $derived(page.url.pathname);

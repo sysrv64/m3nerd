@@ -126,6 +126,8 @@
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 16px;
+		max-width: 100%;
+		min-width: 0;
 		padding-block: 48px 56px;
 	}
 
@@ -163,7 +165,7 @@
 
 	.features {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
 		gap: 16px;
 		padding-block: 8px 48px;
 	}
@@ -205,7 +207,9 @@
 
 	.previews-head {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 8px;
+		min-width: 0;
 		margin-bottom: 24px;
 	}
 
@@ -228,12 +232,16 @@
 		flex-wrap: wrap;
 		align-items: flex-start;
 		gap: 24px;
+		max-width: 100%;
+		min-width: 0;
 	}
 
 	.preview-item {
 		margin: 0;
 		display: grid;
 		gap: 8px;
+		max-width: 100%;
+		min-width: 0;
 	}
 
 	.frame {

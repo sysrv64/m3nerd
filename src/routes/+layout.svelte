@@ -101,8 +101,14 @@
 		color-scheme: dark;
 	}
 
+	:global(html),
 	:global(body) {
 		margin: 0;
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+
+	:global(body) {
 		min-height: 100dvh;
 		background: var(--m3-sys-surface);
 		color: var(--m3-sys-on-surface);
@@ -135,9 +141,14 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 16px;
-		height: 64px;
-		padding-inline: var(--m3-layout-gutter);
+		flex-wrap: wrap;
+		gap: 8px 16px;
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		height: auto;
+		min-height: 64px;
+		padding: 8px var(--m3-layout-gutter);
 		background: var(--m3-sys-surface-container-low);
 		color: var(--m3-sys-on-surface);
 		box-shadow: var(--m3-sys-elevation-2);
@@ -147,6 +158,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 12px;
+		min-width: 0;
 		color: inherit;
 		text-decoration: none;
 		font-weight: 600;
@@ -166,6 +178,10 @@
 	}
 
 	.brand-name {
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		font-size: var(--m3-sys-typescale-title-medium);
 		letter-spacing: var(--m3-sys-typescale-title-medium-tracking);
 	}
@@ -173,7 +189,10 @@
 	.topbar-actions {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 		gap: 8px;
+		min-width: 0;
+		margin-inline-start: auto;
 	}
 
 	.icon-ctl {
@@ -226,14 +245,19 @@
 			'nav'
 			'main';
 		grid-template-columns: minmax(0, 1fr);
+		width: 100%;
 		max-width: var(--m3-layout-max-width);
+		min-width: 0;
 		margin-inline: auto;
 	}
 
 	.sidenav {
 		grid-area: nav;
 		display: flex;
+		flex-wrap: wrap;
 		gap: 4px;
+		min-width: 0;
+		max-width: 100%;
 		padding: 8px var(--m3-layout-gutter);
 		overflow-x: auto;
 		border-bottom: 1px solid var(--m3-sys-outline-variant);
@@ -275,8 +299,14 @@
 		grid-area: main;
 		min-width: 0;
 		max-width: 100%;
+		width: 100%;
 		overflow-x: clip;
 		padding: 32px var(--m3-layout-gutter) 64px;
+	}
+
+	#main > :global(*) {
+		max-width: 100%;
+		min-width: 0;
 	}
 
 	@media (min-width: 600px) {

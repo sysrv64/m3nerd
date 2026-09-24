@@ -1061,7 +1061,10 @@
 <style>
 	.page-head {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 12px;
+		max-width: 100%;
+		min-width: 0;
 		margin-bottom: 40px;
 	}
 
@@ -1107,14 +1110,20 @@
 
 	.demo {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 20px;
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
 		margin-bottom: 56px;
 		scroll-margin-top: 88px;
 	}
 
 	.demo-head {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 6px;
+		min-width: 0;
 	}
 
 	.demo-head h2 {
@@ -1133,8 +1142,10 @@
 
 	.preview {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 20px;
 		padding: 24px;
+		width: 100%;
 		max-width: 100%;
 		min-width: 0;
 		border: 1px solid var(--m3-sys-outline-variant);
@@ -1143,11 +1154,18 @@
 		--m3-field-label-bg: var(--m3-sys-surface-container);
 	}
 
+	.preview > :global(*) {
+		min-width: 0;
+		max-width: 100%;
+	}
+
 	.preview-row {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 12px;
+		max-width: 100%;
+		min-width: 0;
 	}
 
 	.preview-note {
@@ -1172,7 +1190,9 @@
 
 	.card-body {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 6px;
+		min-width: 0;
 		padding: 20px;
 	}
 
@@ -1196,6 +1216,7 @@
 
 	.form-cell {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 10px;
 		align-content: start;
 		min-width: 0;
@@ -1210,12 +1231,18 @@
 
 	.stacked {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 10px;
 		width: 100%;
+		max-width: 100%;
+		min-width: 0;
 	}
 
 	.suite-frame {
 		position: relative;
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
 		height: 360px;
 		padding: 0;
 		overflow: hidden;
@@ -1226,12 +1253,18 @@
 
 	.suite-frame--bar {
 		height: auto;
-		overflow: visible;
+		max-height: 120px;
+		overflow: hidden;
 		display: flex;
 		align-items: flex-end;
 		border-style: solid;
 		border-radius: var(--m3-sys-shape-medium);
 		background: var(--m3-sys-surface-container);
+	}
+
+	.suite-frame--bar :global(.m3-nav-bar) {
+		min-width: 0;
+		max-width: 100%;
 	}
 
 	.menu-anchor {
@@ -1262,6 +1295,9 @@
 	}
 
 	.table-wrap {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
 		overflow-x: auto;
 		border: 1px solid var(--m3-sys-outline-variant);
 		border-radius: var(--m3-sys-shape-medium);
@@ -1270,8 +1306,10 @@
 
 	table {
 		width: 100%;
+		max-width: 100%;
 		border-collapse: collapse;
 		font-size: 0.875rem;
+		table-layout: fixed;
 	}
 
 	th,
@@ -1280,13 +1318,13 @@
 		text-align: start;
 		vertical-align: top;
 		border-bottom: 1px solid var(--m3-sys-outline-variant);
+		overflow-wrap: anywhere;
 	}
 
 	th {
 		background: var(--m3-sys-surface-container);
 		color: var(--m3-sys-on-surface);
 		font-weight: 600;
-		white-space: nowrap;
 	}
 
 	td {
@@ -1300,10 +1338,15 @@
 	.table-wrap code {
 		font-family: var(--m3-sys-font-mono);
 		font-size: 0.8em;
-		white-space: nowrap;
+		overflow-wrap: anywhere;
+		word-break: break-word;
 	}
 
 	.code-details {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		overflow: hidden;
 		border: 1px solid var(--m3-sys-outline-variant);
 		border-radius: var(--m3-sys-shape-medium);
 		background: var(--m3-sys-surface-container-low);
@@ -1320,6 +1363,7 @@
 	.code-details pre {
 		margin: 0;
 		padding: 16px;
+		max-width: 100%;
 		overflow-x: auto;
 		border-top: 1px solid var(--m3-sys-outline-variant);
 		font: 400 0.8125rem/1.55 var(--m3-sys-font-mono);
@@ -1334,7 +1378,10 @@
 
 	.pg-field {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 8px;
+		max-width: 100%;
+		min-width: 0;
 		margin: 0;
 		padding: 16px;
 		border: 1px solid var(--m3-sys-outline-variant);
@@ -1365,13 +1412,17 @@
 
 	.pg-sample {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 10px;
 		align-content: start;
+		min-width: 0;
 	}
 
 	.ruler {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 14px;
+		min-width: 0;
 		padding-top: 4px;
 	}
 

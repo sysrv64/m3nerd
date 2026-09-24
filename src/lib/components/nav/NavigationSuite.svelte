@@ -172,8 +172,11 @@ $effect(() => {
 
 <style>
 	.m3-nav-suite {
-		min-height: 100dvh;
 		position: relative;
+		min-height: 100dvh;
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
 	}
 
 	.m3-nav-suite.contained {

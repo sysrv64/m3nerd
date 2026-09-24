@@ -319,7 +319,10 @@ End();</code></pre>
 <style>
 	.page-head {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 12px;
+		max-width: 100%;
+		min-width: 0;
 		margin-bottom: 40px;
 	}
 
@@ -367,11 +370,16 @@ End();</code></pre>
 		display: flex;
 		flex-direction: column;
 		gap: 40px;
+		max-width: 100%;
+		min-width: 0;
 	}
 
 	.ig-section {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 12px;
+		max-width: 100%;
+		min-width: 0;
 		scroll-margin-top: 88px;
 	}
 
@@ -395,8 +403,11 @@ End();</code></pre>
 
 	.ig-stage {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 16px;
+		width: 100%;
 		max-width: 100%;
+		min-width: 0;
 		padding: 20px;
 		border: 1px solid var(--m3-sys-outline-variant);
 		border-radius: var(--m3-sys-shape-large);

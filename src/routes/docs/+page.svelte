@@ -237,7 +237,10 @@
 <style>
 	.page-head {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 12px;
+		max-width: 100%;
+		min-width: 0;
 		margin-bottom: 40px;
 	}
 
@@ -258,7 +261,10 @@
 
 	.doc-section {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 16px;
+		max-width: 100%;
+		min-width: 0;
 		margin-bottom: 48px;
 	}
 
@@ -297,6 +303,7 @@
 	pre {
 		margin: 0;
 		padding: 20px;
+		max-width: 100%;
 		overflow-x: auto;
 		border: 1px solid var(--m3-sys-outline-variant);
 		border-radius: var(--m3-sys-shape-medium);
@@ -306,6 +313,9 @@
 	}
 
 	.table-wrap {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
 		overflow-x: auto;
 		border: 1px solid var(--m3-sys-outline-variant);
 		border-radius: var(--m3-sys-shape-medium);
@@ -314,8 +324,10 @@
 
 	table {
 		width: 100%;
+		max-width: 100%;
 		border-collapse: collapse;
 		font-size: 0.875rem;
+		table-layout: fixed;
 	}
 
 	th,
@@ -324,13 +336,13 @@
 		text-align: start;
 		vertical-align: top;
 		border-bottom: 1px solid var(--m3-sys-outline-variant);
+		overflow-wrap: anywhere;
 	}
 
 	th {
 		background: var(--m3-sys-surface-container);
 		color: var(--m3-sys-on-surface);
 		font-weight: 600;
-		white-space: nowrap;
 	}
 
 	td {
@@ -342,6 +354,7 @@
 	}
 
 	td code {
-		white-space: nowrap;
+		overflow-wrap: anywhere;
+		word-break: break-word;
 	}
 </style>

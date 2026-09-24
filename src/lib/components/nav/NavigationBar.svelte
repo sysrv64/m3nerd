@@ -87,12 +87,15 @@ function activate(item: NavItem) {
 		display: flex;
 		align-items: stretch;
 		width: 100%;
+		max-width: 100%;
+		min-width: 0;
 		height: var(--m3-nav-height);
 		padding-bottom: env(safe-area-inset-bottom, 0px);
 		box-sizing: content-box;
 		background: var(--m3-sys-surface-container);
 		color: var(--m3-sys-on-surface-variant);
 		box-shadow: var(--m3-sys-elevation-2);
+		overflow: hidden;
 	}
 
 	.m3-nav-bar__item {

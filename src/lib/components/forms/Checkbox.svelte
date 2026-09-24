@@ -161,21 +161,33 @@ $effect(() => {
 	.m3-checkbox__mark .check {
 		stroke-dasharray: 100;
 		stroke-dashoffset: 100;
-		transition: stroke-dashoffset var(--m3-motion-default);
+		stroke-linecap: butt;
+		opacity: 0;
+		transition:
+			stroke-dashoffset var(--m3-motion-default),
+			opacity var(--m3-motion-fast);
 	}
 
 	.m3-checkbox__native:checked + .m3-checkbox__box .check {
 		stroke-dashoffset: 0;
+		stroke-linecap: round;
+		opacity: 1;
 	}
 
 	.m3-checkbox__mark .dash {
 		stroke-dasharray: 100;
 		stroke-dashoffset: 100;
-		transition: stroke-dashoffset var(--m3-motion-default);
+		stroke-linecap: butt;
+		opacity: 0;
+		transition:
+			stroke-dashoffset var(--m3-motion-default),
+			opacity var(--m3-motion-fast);
 	}
 
 	.m3-checkbox__native:indeterminate + .m3-checkbox__box .dash {
 		stroke-dashoffset: 40;
+		stroke-linecap: round;
+		opacity: 1;
 	}
 
 	.m3-checkbox__label {

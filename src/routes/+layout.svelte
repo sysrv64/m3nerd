@@ -274,6 +274,8 @@
 	#main {
 		grid-area: main;
 		min-width: 0;
+		max-width: 100%;
+		overflow-x: clip;
 		padding: 32px var(--m3-layout-gutter) 64px;
 	}
 

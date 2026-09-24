@@ -33,6 +33,7 @@ export { default as DatePickerDocked } from './components/forms/DatePickerDocked
 export { default as NavigationSuite } from './components/nav/NavigationSuite.svelte';
 export { default as NavigationRail } from './components/nav/NavigationRail.svelte';
 export { default as NavigationBar } from './components/nav/NavigationBar.svelte';
+export { default as NavigationNavBar } from './components/nav/NavigationBar.svelte';
 export { default as Tabs } from './components/nav/Tabs.svelte';
 export { default as Toolbar } from './components/layout/Toolbar.svelte';
 

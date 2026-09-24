@@ -73,13 +73,15 @@ let {
 
 	.m3-switch__track {
 		position: relative;
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
 		width: 52px;
 		height: 32px;
 		flex-shrink: 0;
 		border: 2px solid var(--m3-sys-outline);
 		border-radius: var(--m3-sys-shape-full);
 		background: var(--m3-sys-surface-container-highest);
+		box-sizing: border-box;
 		transition:
 			background-color var(--m3-motion-fast),
 			border-color var(--m3-motion-fast);
@@ -97,39 +99,39 @@ let {
 
 	.m3-switch__thumb {
 		position: absolute;
-		top: 2px;
-		left: 0;
+		top: 50%;
+		left: 2px;
 		width: 24px;
 		height: 24px;
+		margin: 0;
 		border-radius: var(--m3-sys-shape-full);
 		background: var(--m3-sys-on-surface-variant);
-		transform: translateX(0) scale(0.6667);
+		box-sizing: border-box;
+		transform: translateY(-50%) scale(0.667);
 		transform-origin: center;
-		transition:
-			transform var(--m3-motion-spatial-fast),
-			background-color var(--m3-motion-fast);
+		transition: transform var(--m3-motion-spatial-fast);
 	}
 
 	.m3-switch__native:checked + .m3-switch__track .m3-switch__thumb {
 		background: var(--m3-sys-on-primary);
-		transform: translateX(20px) scale(1);
+		transform: translateY(-50%) translateX(20px) scale(1);
 	}
 
 	.m3-switch:active:not(.disabled) .m3-switch__thumb {
-		transform: translateX(0) scale(1.1667);
+		transform: translateY(-50%) scale(0.8);
 	}
 
 	.m3-switch:active:not(.disabled)
 		.m3-switch__native:checked
 		+ .m3-switch__track
 		.m3-switch__thumb {
-		transform: translateX(20px) scale(1.1667);
+		transform: translateY(-50%) translateX(20px) scale(1.167);
 	}
 
 	.m3-switch__thumb::after {
 		content: '';
 		position: absolute;
-		inset: 0;
+		inset: -4px;
 		border-radius: inherit;
 		background: currentColor;
 		opacity: 0;

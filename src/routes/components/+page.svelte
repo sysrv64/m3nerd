@@ -18,6 +18,7 @@
 		LoadingIndicator,
 		Menu,
 		MenuItem,
+		NavigationBar,
 		NavigationSuite,
 		Radio,
 		Select,
@@ -755,13 +756,17 @@
 	</div>
 
 	<div class="preview">
-		<span class="cell-label">NavigationSuite — five items, activeId bound</span>
+		<span class="cell-label">NavigationSuite — bottom bar on phone, rail on tablet+</span>
 		<div class="suite-frame">
-			<div class="suite-zoom">
-				<NavigationSuite items={suiteItems} bind:activeId={suiteActive} />
-			</div>
+			<NavigationSuite items={suiteItems} bind:activeId={suiteActive} contained />
 		</div>
 		<p class="preview-note">Active item: <code>{suiteActive}</code></p>
+
+		<span class="cell-label">NavigationBar — phone bottom tabs</span>
+		<div class="suite-frame suite-frame--bar">
+			<NavigationBar items={suiteItems} bind:activeId={suiteActive} />
+		</div>
+		<p class="preview-note">Same activeId — tabs switch from the bottom on compact widths.</p>
 
 		<span class="cell-label">Tabs — primary</span>
 		<Tabs tabs={primaryTabs} bind:activeId={primaryTab} variant="primary" />
@@ -1130,9 +1135,12 @@
 		display: grid;
 		gap: 20px;
 		padding: 24px;
+		max-width: 100%;
+		min-width: 0;
 		border: 1px solid var(--m3-sys-outline-variant);
 		border-radius: var(--m3-sys-shape-large);
 		background: var(--m3-sys-surface-container);
+		--m3-field-label-bg: var(--m3-sys-surface-container);
 	}
 
 	.preview-row {
@@ -1158,7 +1166,7 @@
 
 	.card-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 		gap: 16px;
 	}
 
@@ -1182,7 +1190,7 @@
 
 	.form-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
 		gap: 24px;
 	}
 
@@ -1190,6 +1198,7 @@
 		display: grid;
 		gap: 10px;
 		align-content: start;
+		min-width: 0;
 	}
 
 	.inline-controls {
@@ -1206,6 +1215,7 @@
 	}
 
 	.suite-frame {
+		position: relative;
 		height: 360px;
 		padding: 0;
 		overflow: hidden;
@@ -1214,10 +1224,14 @@
 		background: var(--m3-sys-surface-container-low);
 	}
 
-	.suite-zoom {
-		width: 160%;
-		transform: scale(0.625);
-		transform-origin: top left;
+	.suite-frame--bar {
+		height: auto;
+		overflow: visible;
+		display: flex;
+		align-items: flex-end;
+		border-style: solid;
+		border-radius: var(--m3-sys-shape-medium);
+		background: var(--m3-sys-surface-container);
 	}
 
 	.menu-anchor {
@@ -1314,7 +1328,7 @@
 
 	.playground-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
 		gap: 20px;
 	}
 

@@ -52,6 +52,7 @@ const interactive = $derived(tag === 'button' || tag === 'a' || Boolean(onclick)
 		border-radius: var(--_shape);
 		background: var(--_bg);
 		color: var(--_fg);
+		--m3-field-label-bg: var(--_bg);
 		text-align: start;
 		text-decoration: none;
 		transition: transform var(--m3-motion-spatial-fast);

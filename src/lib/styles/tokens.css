@@ -226,6 +226,9 @@
 	--m3-control-height: calc(40px * var(--m3-density-scale));
 	--m3-touch-target: 48px;
 	--m3-row-height: calc(56px * var(--m3-density-scale));
+
+	/* Outlined field/select floating-label punch-out — override to match host surface */
+	--m3-field-label-bg: var(--m3-sys-surface);
 }
 
 /* Opt-in density: each compact step ≈ −4px on control metrics (legacy M2 convention). */

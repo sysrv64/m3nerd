@@ -383,7 +383,7 @@ $effect(() => {
 	}
 
 	.v-outlined .m3-select__label {
-		background: var(--m3-sys-surface);
+		background: var(--m3-field-label-bg, var(--m3-sys-surface));
 		padding-inline: 4px;
 		inset-inline-start: 12px;
 	}

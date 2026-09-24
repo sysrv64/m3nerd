@@ -122,6 +122,7 @@ function handleBlur(event: Event) {
 		--_outline-rest: var(--m3-sys-outline-variant);
 		--_outline-active: var(--m3-sys-primary);
 		--_label-color: var(--m3-sys-on-surface-variant);
+		--_label-bg: var(--m3-field-label-bg, var(--m3-sys-surface));
 		--_label-y: calc(28px * var(--m3-density-scale));
 		--_label-float-y: 0px;
 		position: relative;
@@ -257,7 +258,7 @@ function handleBlur(event: Event) {
 	}
 
 	.v-outlined .m3-text-field__label {
-		background: var(--m3-sys-surface);
+		background: var(--_label-bg);
 		padding-inline: 4px;
 		inset-inline-start: 12px;
 	}
@@ -278,7 +279,7 @@ function handleBlur(event: Event) {
 		min-height: calc(72px * var(--m3-density-scale));
 	}
 
-	/* Filled: container tint + bottom indicator color change */
+	/* Filled: container tint + bottom indicator (static 1px, focus via box-shadow — no height jump) */
 	.v-filled {
 		--_label-float-y: 8px;
 	}
@@ -286,33 +287,36 @@ function handleBlur(event: Event) {
 	.v-filled .m3-text-field__control {
 		border-radius: var(--m3-sys-shape-extra-small) var(--m3-sys-shape-extra-small) 0 0;
 		background: var(--m3-sys-surface-container-highest);
-		padding: 16px;
+		padding: 8px 16px 0;
 		min-height: calc(56px * var(--m3-density-scale));
-		transition: background-color var(--m3-motion-fast);
+		align-items: flex-end;
+		box-shadow: inset 0 -1px 0 0 var(--m3-sys-on-surface-variant);
+		transition:
+			background-color var(--m3-motion-fast),
+			box-shadow var(--m3-motion-fast);
 	}
 
-	.v-filled .m3-text-field__control::after {
-		content: '';
-		position: absolute;
-		inset-inline: 0;
-		bottom: 0;
-		height: 1px;
-		background: var(--m3-sys-on-surface-variant);
-		pointer-events: none;
-		transition: background-color var(--m3-motion-fast);
+	.v-filled .m3-text-field__control:has(.m3-text-field__field:focus) {
+		background: color-mix(in srgb, var(--m3-sys-surface-container-highest) 92%, var(--m3-sys-primary));
+		box-shadow: inset 0 -2px 0 0 var(--_outline-active);
 	}
 
-	.v-filled .m3-text-field__control:has(.m3-text-field__field:focus)::after {
-		background: var(--_outline-active);
-		height: 2px;
+	.v-filled.invalid .m3-text-field__control {
+		box-shadow: inset 0 -1px 0 0 var(--m3-sys-error);
 	}
 
-	.v-filled.invalid .m3-text-field__control::after {
-		background: var(--m3-sys-error);
+	.v-filled.invalid .m3-text-field__control:has(.m3-text-field__field:focus) {
+		box-shadow: inset 0 -2px 0 0 var(--m3-sys-error);
 	}
 
 	.v-filled .m3-text-field__label {
 		inset-inline-start: 16px;
+		top: 18px;
+	}
+
+	.v-filled .m3-text-field__label.floated {
+		transform: translateY(-50%) scale(0.75);
+		top: 12px;
 	}
 
 	.v-filled.has-leading .m3-text-field__label {
@@ -320,11 +324,13 @@ function handleBlur(event: Event) {
 	}
 
 	.v-filled .m3-text-field__field {
-		min-height: calc(24px * var(--m3-density-scale));
+		min-height: calc(28px * var(--m3-density-scale));
+		padding-bottom: 8px;
 	}
 
 	.v-filled.multiline .m3-text-field__control {
 		align-items: flex-start;
+		padding-top: 24px;
 	}
 
 	.v-filled.multiline .m3-text-field__field {
@@ -338,11 +344,11 @@ function handleBlur(event: Event) {
 		.v-outlined .m3-text-field__control:has(.m3-text-field__field:focus)::after {
 			border-color: Highlight;
 		}
-		.v-filled .m3-text-field__control::after {
-			background: CanvasText;
+		.v-filled .m3-text-field__control {
+			box-shadow: inset 0 -1px 0 0 CanvasText;
 		}
-		.v-filled .m3-text-field__control:has(.m3-text-field__field:focus)::after {
-			background: Highlight;
+		.v-filled .m3-text-field__control:has(.m3-text-field__field:focus) {
+			box-shadow: inset 0 -2px 0 0 Highlight;
 		}
 	}
 </style>

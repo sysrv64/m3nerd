@@ -19,6 +19,8 @@ interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'class'> {
 	activeId?: string;
 	variant?: 'auto' | 'bar' | 'rail' | 'drawer';
 	railExpanded?: boolean;
+	/** Position chrome absolute inside a relative parent (demo embeds / custom shells). */
+	contained?: boolean;
 	brand?: Snippet;
 	actions?: Snippet;
 	children?: Snippet;
@@ -30,6 +32,7 @@ let {
 	activeId = $bindable(''),
 	variant = 'auto',
 	railExpanded,
+	contained = false,
 	brand,
 	actions,
 	children,
@@ -70,7 +73,7 @@ $effect(() => {
 </script>
 
 <div
-	class={cn('m3-nav-suite', manyItems && 'drawer-path', className)}
+	class={cn('m3-nav-suite', manyItems && 'drawer-path', contained && 'contained', className)}
 	data-variant={variant}
 	data-rail-expanded={railExpandedAttr}
 	{...rest}
@@ -170,6 +173,26 @@ $effect(() => {
 <style>
 	.m3-nav-suite {
 		min-height: 100dvh;
+		position: relative;
+	}
+
+	.m3-nav-suite.contained {
+		min-height: 100%;
+		height: 100%;
+	}
+
+	/* Contained: absolute chrome sticks to this box instead of the viewport */
+	.m3-nav-suite.contained .suite-bar,
+	.m3-nav-suite.contained .suite-bottom,
+	.m3-nav-suite.contained .suite-rail,
+	.m3-nav-suite.contained .suite-drawer,
+	.m3-nav-suite.contained .suite-scrim {
+		position: absolute;
+	}
+
+	.m3-nav-suite.contained .m3-nav-suite__content {
+		min-height: 100%;
+		height: 100%;
 	}
 
 	/* Suite chrome visibility — mobile-first defaults (compact auto) */

@@ -92,7 +92,7 @@ const ticks = $derived(tickCount > 0 ? Array.from({ length: tickCount }, (_, i) 
 		background: linear-gradient(
 			to right,
 			var(--m3-sys-primary) 0 var(--_active),
-			var(--m3-sys-surface-container-highest) var(--_active) 100%
+			var(--m3-sys-secondary-container) var(--_active) 100%
 		);
 	}
 
@@ -105,16 +105,6 @@ const ticks = $derived(tickCount > 0 ? Array.from({ length: tickCount }, (_, i) 
 		border: none;
 		border-radius: var(--m3-sys-shape-full);
 		background: var(--m3-sys-primary);
-		transform: scale(1);
-		transition:
-			transform var(--m3-motion-fast),
-			background-color var(--m3-motion-fast);
-	}
-
-	.m3-slider__input:hover::-webkit-slider-thumb,
-	.m3-slider__input:focus-visible::-webkit-slider-thumb,
-	.m3-slider__input:active::-webkit-slider-thumb {
-		transform: scale(1.25);
 	}
 
 	.m3-slider__input:focus-visible::-webkit-slider-thumb {
@@ -125,7 +115,7 @@ const ticks = $derived(tickCount > 0 ? Array.from({ length: tickCount }, (_, i) 
 	.m3-slider__input::-moz-range-track {
 		height: var(--_track-h);
 		border-radius: var(--m3-sys-shape-full);
-		background: var(--m3-sys-surface-container-highest);
+		background: var(--m3-sys-secondary-container);
 	}
 
 	.m3-slider__input::-moz-range-progress {
@@ -140,16 +130,6 @@ const ticks = $derived(tickCount > 0 ? Array.from({ length: tickCount }, (_, i) 
 		border: none;
 		border-radius: var(--m3-sys-shape-full);
 		background: var(--m3-sys-primary);
-		transform: scale(1);
-		transition:
-			transform var(--m3-motion-fast),
-			background-color var(--m3-motion-fast);
-	}
-
-	.m3-slider__input:hover::-moz-range-thumb,
-	.m3-slider__input:focus-visible::-moz-range-thumb,
-	.m3-slider__input:active::-moz-range-thumb {
-		transform: scale(1.25);
 	}
 
 	.m3-slider__input:focus-visible::-moz-range-thumb {

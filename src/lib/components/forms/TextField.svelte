@@ -161,11 +161,11 @@ function handleBlur(event: Event) {
 	}
 
 	.m3-text-field__icon.leading {
-		margin-inline-end: 12px;
+		margin-inline-end: 16px;
 	}
 
 	.m3-text-field__icon.trailing {
-		margin-inline-start: 12px;
+		margin-inline-start: 16px;
 	}
 
 	.m3-text-field__field {
@@ -201,7 +201,7 @@ function handleBlur(event: Event) {
 	}
 
 	.has-leading .m3-text-field__label {
-		inset-inline-start: 52px;
+		inset-inline-start: 56px;
 	}
 
 	.m3-text-field__label.floated {
@@ -263,7 +263,7 @@ function handleBlur(event: Event) {
 	}
 
 	.v-outlined.has-leading .m3-text-field__label {
-		inset-inline-start: 48px;
+		inset-inline-start: 56px;
 	}
 
 	.v-outlined .m3-text-field__field {
@@ -304,6 +304,7 @@ function handleBlur(event: Event) {
 
 	.v-filled .m3-text-field__control:has(.m3-text-field__field:focus)::after {
 		background: var(--_outline-active);
+		height: 2px;
 	}
 
 	.v-filled.invalid .m3-text-field__control::after {
@@ -315,7 +316,7 @@ function handleBlur(event: Event) {
 	}
 
 	.v-filled.has-leading .m3-text-field__label {
-		inset-inline-start: 52px;
+		inset-inline-start: 56px;
 	}
 
 	.v-filled .m3-text-field__field {

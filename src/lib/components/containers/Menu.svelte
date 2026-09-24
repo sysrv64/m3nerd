@@ -159,8 +159,8 @@
 		z-index: 1101;
 		min-width: 112px;
 		padding-block: 4px;
-		border-radius: var(--m3-sys-shape-small);
-		background: var(--m3-sys-surface-container-high);
+		border-radius: var(--m3-sys-shape-extra-small);
+		background: var(--m3-sys-surface-container);
 		color: var(--m3-sys-on-surface);
 		box-shadow: var(--m3-sys-elevation-2);
 		overflow-y: auto;

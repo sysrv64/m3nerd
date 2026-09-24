@@ -58,15 +58,15 @@
 		align-items: center;
 		gap: var(--m3-sys-space-3);
 		width: 100%;
-		height: var(--m3-row-height);
+		height: 48px;
 		padding-inline: var(--m3-sys-space-3);
 		border: none;
 		border-radius: 0;
 		background: transparent;
 		color: inherit;
-		font: var(--m3-sys-typescale-body-large-weight) var(--m3-sys-typescale-body-large) /
-			var(--m3-sys-typescale-body-large-line) var(--m3-sys-font);
-		letter-spacing: var(--m3-sys-typescale-body-large-tracking);
+		font: var(--m3-sys-typescale-label-large-weight) var(--m3-sys-typescale-label-large) /
+			var(--m3-sys-typescale-label-large-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-label-large-tracking);
 		text-align: start;
 		cursor: pointer;
 		-webkit-tap-highlight-color: transparent;

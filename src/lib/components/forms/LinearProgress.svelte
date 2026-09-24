@@ -56,7 +56,7 @@ const ariaValue = $derived(determinate ? Math.round(progress * 100) : undefined)
 		height: 4px;
 		overflow: hidden;
 		border-radius: var(--m3-sys-shape-full);
-		background: var(--m3-sys-surface-container-highest);
+		background: var(--m3-sys-secondary-container);
 	}
 
 	.m3-linear__fill {

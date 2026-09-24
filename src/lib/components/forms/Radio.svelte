@@ -64,8 +64,12 @@ function handleChange(event: Event) {
 	}
 
 	.m3-radio.disabled {
-		opacity: 0.38;
 		pointer-events: none;
+	}
+
+	.m3-radio.disabled .m3-radio__circle,
+	.m3-radio.disabled .m3-radio__label {
+		opacity: 0.38;
 	}
 
 	.m3-radio__native {
@@ -91,6 +95,29 @@ function handleChange(event: Event) {
 		transition:
 			border-color var(--m3-motion-fast),
 			background-color var(--m3-motion-fast);
+	}
+
+	.m3-radio__circle::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 40px;
+		height: 40px;
+		border-radius: var(--m3-sys-shape-full);
+		background: currentColor;
+		opacity: 0;
+		pointer-events: none;
+		transform: translate(-50%, -50%);
+		transition: opacity var(--m3-motion-fast);
+	}
+
+	.m3-radio:hover:not(.disabled) .m3-radio__circle::before {
+		opacity: 0.08;
+	}
+
+	.m3-radio:active:not(.disabled) .m3-radio__circle::before {
+		opacity: 0.1;
 	}
 
 	.m3-radio__native:checked + .m3-radio__circle {

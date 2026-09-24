@@ -24,6 +24,7 @@
 	--m3-sys-motion-duration-spatial-fast: 350ms;
 	--m3-sys-motion-duration-spatial-default: 500ms;
 	--m3-sys-motion-duration-spatial-slow: 650ms;
+	--m3-sys-motion-duration-spatial-slow-standard: 750ms;
 
 	/* Composite tokens: components consume these, never raw beziers */
 	--m3-motion-fast: var(--m3-sys-motion-duration-fast)
@@ -44,6 +45,15 @@
 		var(--m3-sys-motion-spring-standard-fast-spatial);
 	--m3-motion-standard-default: var(--m3-sys-motion-duration-default)
 		var(--m3-sys-motion-spring-standard-default-spatial);
+	--m3-motion-standard-slow: var(--m3-sys-motion-duration-spatial-slow-standard)
+		var(--m3-sys-motion-spring-standard-slow-spatial);
+
+	--m3-motion-standard-fast-effects: var(--m3-sys-motion-duration-fast)
+		var(--m3-sys-motion-spring-expressive-fast-effects);
+	--m3-motion-standard-default-effects: var(--m3-sys-motion-duration-default)
+		var(--m3-sys-motion-spring-expressive-default-effects);
+	--m3-motion-standard-slow-effects: var(--m3-sys-motion-duration-slow)
+		var(--m3-sys-motion-spring-expressive-slow-effects);
 
 	/* Emphasized legacy easings (still official for transitions) */
 	--m3-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
@@ -61,5 +71,9 @@
 		--m3-motion-spatial-slow: 1ms linear;
 		--m3-motion-standard-fast: 1ms linear;
 		--m3-motion-standard-default: 1ms linear;
+		--m3-motion-standard-slow: 1ms linear;
+		--m3-motion-standard-fast-effects: 1ms linear;
+		--m3-motion-standard-default-effects: 1ms linear;
+		--m3-motion-standard-slow-effects: 1ms linear;
 	}
 }

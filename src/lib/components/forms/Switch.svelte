@@ -55,8 +55,11 @@ let {
 	}
 
 	.m3-switch.disabled {
-		opacity: 0.38;
 		pointer-events: none;
+	}
+
+	.m3-switch.disabled .m3-switch__label {
+		opacity: 0.38;
 	}
 
 	.m3-switch__native {
@@ -110,6 +113,50 @@ let {
 	.m3-switch__native:checked + .m3-switch__track .m3-switch__thumb {
 		background: var(--m3-sys-on-primary);
 		transform: translateX(20px) scale(1);
+	}
+
+	.m3-switch:active:not(.disabled) .m3-switch__thumb {
+		transform: translateX(0) scale(1.1667);
+	}
+
+	.m3-switch:active:not(.disabled)
+		.m3-switch__native:checked
+		+ .m3-switch__track
+		.m3-switch__thumb {
+		transform: translateX(20px) scale(1.1667);
+	}
+
+	.m3-switch__thumb::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		background: currentColor;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity var(--m3-motion-fast);
+	}
+
+	.m3-switch:hover:not(.disabled) .m3-switch__thumb::after {
+		opacity: 0.08;
+	}
+
+	.m3-switch:active:not(.disabled) .m3-switch__thumb::after {
+		opacity: 0.12;
+	}
+
+	.m3-switch.disabled .m3-switch__track,
+	.m3-switch.disabled .m3-switch__native:checked + .m3-switch__track {
+		background: color-mix(in srgb, var(--m3-sys-on-surface) 12%, transparent);
+		border-color: color-mix(in srgb, var(--m3-sys-on-surface) 12%, transparent);
+	}
+
+	.m3-switch.disabled .m3-switch__thumb,
+	.m3-switch.disabled
+		.m3-switch__native:checked
+		+ .m3-switch__track
+		.m3-switch__thumb {
+		background: color-mix(in srgb, var(--m3-sys-on-surface) 38%, transparent);
 	}
 
 	.m3-switch__label {

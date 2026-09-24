@@ -42,7 +42,7 @@ function activate(item: NavItem) {
 	{#each items as item (item.id)}
 		{#if item.href}
 			<a
-				class="m3-nav-bar__item"
+				class="m3-nav-bar__item m3-layer"
 				href={item.disabled ? undefined : item.href}
 				aria-current={item.id === activeId ? 'page' : undefined}
 				aria-disabled={item.disabled || undefined}
@@ -62,7 +62,7 @@ function activate(item: NavItem) {
 		{:else}
 			<button
 				type="button"
-				class="m3-nav-bar__item"
+				class="m3-nav-bar__item m3-layer"
 				disabled={item.disabled}
 				aria-current={item.id === activeId ? 'page' : undefined}
 				data-active={item.id === activeId}
@@ -90,6 +90,7 @@ function activate(item: NavItem) {
 		height: var(--m3-nav-height);
 		background: var(--m3-sys-surface-container);
 		color: var(--m3-sys-on-surface-variant);
+		box-shadow: var(--m3-sys-elevation-2);
 	}
 
 	.m3-nav-bar__item {
@@ -130,11 +131,15 @@ function activate(item: NavItem) {
 
 	.indicator {
 		position: absolute;
-		inset: 0;
+		top: 50%;
+		left: 50%;
+		width: 64px;
+		height: 32px;
 		border-radius: var(--m3-sys-shape-full);
 		background: var(--m3-sys-secondary-container);
 		opacity: 0;
 		pointer-events: none;
+		transform: translate(-50%, -50%);
 		transition:
 			opacity var(--m3-motion-fast),
 			background-color var(--m3-motion-fast);
@@ -153,9 +158,9 @@ function activate(item: NavItem) {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		font: var(--m3-sys-typescale-label-large-weight) var(--m3-sys-typescale-label-large) /
-			var(--m3-sys-typescale-label-large-line) var(--m3-sys-font);
-		letter-spacing: var(--m3-sys-typescale-label-large-tracking);
+		font: var(--m3-sys-typescale-label-medium-weight) var(--m3-sys-typescale-label-medium) /
+			var(--m3-sys-typescale-label-medium-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-label-medium-tracking);
 		color: var(--m3-sys-on-surface-variant);
 		transition: color var(--m3-motion-fast);
 	}
@@ -168,9 +173,12 @@ function activate(item: NavItem) {
 		opacity: 1;
 	}
 
-	.m3-nav-bar__item[data-active='true'] .icon,
-	.m3-nav-bar__item[data-active='true'] .label {
+	.m3-nav-bar__item[data-active='true'] .icon {
 		color: var(--m3-sys-on-surface);
+	}
+
+	.m3-nav-bar__item[data-active='true'] .label {
+		color: var(--m3-sys-secondary);
 	}
 
 	.badge {

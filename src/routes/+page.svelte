@@ -45,9 +45,9 @@
 	<h1 class="hero-title">M3Nerd</h1>
 	<p class="hero-tagline">Material 3 Expressive for Svelte — fast, adaptive, opinionated.</p>
 	<div class="hero-ctas">
-		<Button href={`${base}/docs/`} size="l">Get started</Button>
-		<Button href={`${base}/components/`} variant="tonal" size="l">Components</Button>
-		<Button href="https://github.com/sysrv64/m3nerd" variant="outlined" size="l">GitHub</Button>
+		<Button href={`${base}/docs/`} size="m">Get started</Button>
+		<Button href={`${base}/components/`} variant="tonal" size="m">Components</Button>
+		<Button href="https://github.com/sysrv64/m3nerd" variant="outlined" size="m">GitHub</Button>
 	</div>
 </section>
 

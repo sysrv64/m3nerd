@@ -104,7 +104,9 @@ function onOk() {
 	.m3-date-picker {
 		display: flex;
 		flex-direction: column;
-		min-width: min(calc(7 * var(--m3-touch-target) + 16px), calc(100vw - 16px));
+		width: 328px;
+		min-width: 328px;
+		max-width: calc(100vw - 32px);
 		border-radius: var(--m3-sys-shape-medium);
 		background: var(--m3-sys-surface-container-low);
 		overflow: hidden;

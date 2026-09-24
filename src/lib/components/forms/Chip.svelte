@@ -5,9 +5,10 @@ import { cn } from '../../utils/cn.js';
 
 type Variant = 'assist' | 'filter' | 'input' | 'suggested';
 
-interface Props extends Omit<HTMLButtonAttributes, 'class' | 'children'> {
+	interface Props extends Omit<HTMLButtonAttributes, 'class' | 'children'> {
 	variant?: Variant;
 	selected?: boolean;
+	elevated?: boolean;
 	label?: string;
 	disabled?: boolean;
 	icon?: Snippet;
@@ -18,6 +19,7 @@ interface Props extends Omit<HTMLButtonAttributes, 'class' | 'children'> {
 let {
 	variant = 'assist',
 	selected = $bindable(false),
+	elevated = false,
 	label = '',
 	disabled = false,
 	icon,
@@ -64,6 +66,7 @@ const spanProps = $derived(rest as unknown as HTMLAttributes<HTMLSpanElement>);
 			'm3-layer',
 			`v-${variant}`,
 			selected && 'selected',
+			elevated && 'elevated',
 			disabled && 'disabled',
 			className
 		)}
@@ -99,7 +102,7 @@ const spanProps = $derived(rest as unknown as HTMLAttributes<HTMLSpanElement>);
 		margin: 0;
 		padding: 0 16px;
 		border: none;
-		border-radius: var(--m3-sys-shape-full);
+		border-radius: var(--m3-sys-shape-small);
 		font: var(--m3-sys-typescale-label-large-weight) var(--m3-sys-typescale-label-large) /
 			var(--m3-sys-typescale-label-large-line) var(--m3-sys-font);
 		letter-spacing: var(--m3-sys-typescale-label-large-tracking);
@@ -163,13 +166,17 @@ const spanProps = $derived(rest as unknown as HTMLAttributes<HTMLSpanElement>);
 		cursor: default;
 	}
 
-	/* Assist: elevated default */
+	/* Assist: flat resting surface, elevation opt-in via elevated prop */
 	.v-assist {
-		background: var(--m3-sys-surface-container-low);
+		background: var(--m3-sys-surface);
 		color: var(--m3-sys-primary);
+		box-shadow: inset 0 0 0 1px var(--m3-sys-outline-variant);
+	}
+	.v-assist.elevated {
+		background: var(--m3-sys-surface-container-low);
 		box-shadow: var(--m3-sys-elevation-1);
 	}
-	.v-assist:hover:not(:disabled) {
+	.v-assist.elevated:hover:not(:disabled) {
 		box-shadow: var(--m3-sys-elevation-2);
 	}
 

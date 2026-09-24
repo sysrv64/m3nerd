@@ -224,7 +224,7 @@ $effect(() => {
 
 	.m3-date-field__pop :global(.m3-date-picker) {
 		box-shadow: var(--m3-sys-elevation-3);
-		max-width: calc(100vw - 16px);
+		max-width: calc(100vw - 32px);
 		overflow-y: auto;
 		max-height: inherit;
 	}

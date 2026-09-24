@@ -99,7 +99,8 @@
 		display: flex;
 		align-items: center;
 		gap: var(--m3-sys-space-2);
-		width: min(560px, calc(100vw - 32px));
+		width: fit-content;
+		max-width: min(512px, calc(100vw - 32px));
 		min-height: 48px;
 		padding: 8px 8px 8px 16px;
 		border-radius: var(--m3-sys-shape-extra-small);

@@ -109,7 +109,7 @@
 		padding: 0;
 		border: none;
 		border-radius: var(--m3-sys-shape-extra-large);
-		background: var(--m3-sys-surface-container-low);
+		background: var(--m3-sys-surface-container-high);
 		color: var(--m3-sys-on-surface);
 		box-shadow: var(--m3-sys-elevation-3);
 		overflow: hidden;
@@ -150,8 +150,8 @@
 
 	.m3-dialog__title {
 		margin: 0;
-		font: var(--m3-sys-typescale-title-large-weight) var(--m3-sys-typescale-title-large) /
-			var(--m3-sys-typescale-title-large-line) var(--m3-sys-font);
+		font: var(--m3-sys-typescale-headline-small-weight) var(--m3-sys-typescale-headline-small) /
+			var(--m3-sys-typescale-headline-small-line) var(--m3-sys-font);
 		letter-spacing: normal;
 		color: var(--m3-sys-on-surface);
 	}
@@ -175,6 +175,7 @@
 		justify-content: flex-end;
 		gap: var(--m3-sys-space-2);
 		flex-shrink: 0;
+		margin-top: var(--m3-sys-space-2);
 	}
 
 	@keyframes m3-dialog-in {

@@ -40,8 +40,9 @@ function measure() {
 	if (!el) return;
 	const r = el.getBoundingClientRect();
 	const lr = listEl.getBoundingClientRect();
-	indicatorX = r.left - lr.left + listEl.scrollLeft;
-	indicatorW = r.width;
+	const inset = variant === 'primary' ? 2 : 0;
+	indicatorX = r.left - lr.left + listEl.scrollLeft + inset;
+	indicatorW = Math.max(r.width - inset * 2, 0);
 }
 
 $effect(() => {
@@ -125,7 +126,7 @@ function onKeydown(e: KeyboardEvent) {
 				disabled={tab.disabled}
 				data-active={tab.id === activeId}
 				data-tab-id={tab.id}
-				class="tab"
+				class="tab m3-layer"
 				onclick={() => select(tab.id)}
 			>
 				<span class="tab-label">{tab.label}</span>
@@ -188,6 +189,10 @@ function onKeydown(e: KeyboardEvent) {
 		will-change: transform;
 	}
 
+	.v-secondary .indicator {
+		height: 2px;
+	}
+
 	.tab {
 		position: relative;
 		display: inline-flex;
@@ -203,13 +208,19 @@ function onKeydown(e: KeyboardEvent) {
 		cursor: pointer;
 		white-space: nowrap;
 		user-select: none;
-		font: var(--m3-sys-typescale-label-large-weight) var(--m3-sys-typescale-label-large) /
-			var(--m3-sys-typescale-label-large-line) var(--m3-sys-font);
-		letter-spacing: var(--m3-sys-typescale-label-large-tracking);
+		font: var(--m3-sys-typescale-title-small-weight) var(--m3-sys-typescale-title-small) /
+			var(--m3-sys-typescale-title-small-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-title-small-tracking);
 		transition:
 			color var(--m3-motion-fast),
 			background-color var(--m3-motion-fast);
 		-webkit-tap-highlight-color: transparent;
+	}
+
+	.v-secondary .tab {
+		font: var(--m3-sys-typescale-label-large-weight) var(--m3-sys-typescale-label-large) /
+			var(--m3-sys-typescale-label-large-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-label-large-tracking);
 	}
 
 	.tab:disabled {
@@ -220,13 +231,17 @@ function onKeydown(e: KeyboardEvent) {
 	.tab[data-active='true'] {
 		color: var(--m3-sys-primary);
 		font-weight: calc(
-			var(--m3-sys-typescale-label-large-weight) +
+			var(--m3-sys-typescale-title-small-weight) +
 				var(--m3-sys-typescale-emphasized-weight-delta)
 		);
 	}
 
 	.v-secondary .tab[data-active='true'] {
 		color: var(--m3-sys-on-surface);
+		font-weight: calc(
+			var(--m3-sys-typescale-label-large-weight) +
+				var(--m3-sys-typescale-emphasized-weight-delta)
+		);
 	}
 
 	.tab-count {

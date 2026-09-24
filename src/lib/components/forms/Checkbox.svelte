@@ -56,7 +56,7 @@ $effect(() => {
 <style>
 	.m3-checkbox {
 		--_size: 18px;
-		--_shape: var(--m3-sys-shape-extra-small);
+		--_shape: 2px;
 		position: relative;
 		display: inline-flex;
 		align-items: center;
@@ -72,9 +72,13 @@ $effect(() => {
 	}
 
 	.m3-checkbox.disabled {
-		opacity: 0.38;
 		pointer-events: none;
 		color: var(--m3-sys-on-surface);
+	}
+
+	.m3-checkbox.disabled .m3-checkbox__box,
+	.m3-checkbox.disabled .m3-checkbox__label {
+		opacity: 0.38;
 	}
 
 	.m3-checkbox__native {
@@ -97,18 +101,41 @@ $effect(() => {
 		border: 2px solid var(--m3-sys-on-surface);
 		border-radius: var(--_shape);
 		background: transparent;
-		color: var(--m3-sys-on-primary);
+		color: var(--m3-sys-on-surface);
 		transition:
 			background-color var(--m3-motion-fast),
 			border-color var(--m3-motion-fast),
 			color var(--m3-motion-fast);
 	}
 
+	.m3-checkbox__box::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 40px;
+		height: 40px;
+		border-radius: var(--m3-sys-shape-full);
+		background: currentColor;
+		opacity: 0;
+		pointer-events: none;
+		transform: translate(-50%, -50%);
+		transition: opacity var(--m3-motion-fast);
+	}
+
+	.m3-checkbox:hover:not(.disabled) .m3-checkbox__box::before {
+		opacity: 0.08;
+	}
+
+	.m3-checkbox:active:not(.disabled) .m3-checkbox__box::before {
+		opacity: 0.1;
+	}
+
 	.m3-checkbox__native:checked + .m3-checkbox__box,
 	.m3-checkbox__native:indeterminate + .m3-checkbox__box {
 		background: var(--m3-sys-primary);
 		border-color: var(--m3-sys-primary);
-		border-radius: var(--m3-sys-shape-full);
+		color: var(--m3-sys-on-primary);
 	}
 
 	.m3-checkbox__native:focus-visible + .m3-checkbox__box {
@@ -117,6 +144,7 @@ $effect(() => {
 	}
 
 	.m3-checkbox__mark {
+		position: relative;
 		width: 100%;
 		height: 100%;
 		overflow: visible;

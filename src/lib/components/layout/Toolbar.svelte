@@ -61,7 +61,7 @@ let {
 
 	.m3-toolbar.dense {
 		height: 52px;
-		padding-inline: 12px;
+		padding-inline: 16px;
 		gap: 8px;
 	}
 

@@ -32,18 +32,33 @@
 	--m3-sys-error-container: light-dark(#ffdad6, #93000a);
 	--m3-sys-on-error-container: light-dark(#410002, #ffdad6);
 
+	--m3-sys-primary-fixed: #6ff7f7;
+	--m3-sys-primary-fixed-dim: #4fd8eb;
+	--m3-sys-on-primary-fixed: #002020;
+	--m3-sys-on-primary-fixed-variant: #004f52;
+
+	--m3-sys-secondary-fixed: #cce8e6;
+	--m3-sys-secondary-fixed-dim: #b0ccca;
+	--m3-sys-on-secondary-fixed: #053634;
+	--m3-sys-on-secondary-fixed-variant: #2c4e4c;
+
+	--m3-sys-tertiary-fixed: #d3e3ff;
+	--m3-sys-tertiary-fixed-dim: #b3c9e9;
+	--m3-sys-on-tertiary-fixed: #041d36;
+	--m3-sys-on-tertiary-fixed-variant: #2f465f;
+
 	--m3-sys-surface: light-dark(#fef7ff, #141218);
 	--m3-sys-on-surface: light-dark(#1b1b1f, #e6e0e9);
 	--m3-sys-surface-variant: light-dark(#dfe3e8, #c4c7c5);
 	--m3-sys-on-surface-variant: light-dark(#41484d, #c4c7c5);
 
-	--m3-sys-surface-dim: light-dark(#dbd9dd, #3b393e);
+	--m3-sys-surface-dim: light-dark(#ded8e1, #3b393e);
 	--m3-sys-surface-bright: light-dark(#fef7ff, #3b393e);
 	--m3-sys-surface-container-lowest: light-dark(#ffffff, #0f0d13);
-	--m3-sys-surface-container-low: light-dark(#f5f2f6, #1d1b20);
-	--m3-sys-surface-container: light-dark(#efedf1, #211f26);
-	--m3-sys-surface-container-high: light-dark(#e9e7eb, #2b292f);
-	--m3-sys-surface-container-highest: light-dark(#e3e1e5, #36343b);
+	--m3-sys-surface-container-low: light-dark(#f7f2fa, #1d1b20);
+	--m3-sys-surface-container: light-dark(#f3edf7, #211f26);
+	--m3-sys-surface-container-high: light-dark(#ece6f0, #2b292f);
+	--m3-sys-surface-container-highest: light-dark(#e6e0e9, #36343b);
 
 	--m3-sys-outline: light-dark(#71787d, #8e9099);
 	--m3-sys-outline-variant: light-dark(#c0c7cc, #41484d);
@@ -67,6 +82,12 @@
 	--m3-sys-shape-extra-extra-large: 48px;
 	--m3-sys-shape-full: 9999px;
 
+	--m3-card-shape: var(--m3-sys-shape-medium);
+	--m3-dialog-shape: var(--m3-sys-shape-extra-large);
+	--m3-menu-shape: var(--m3-sys-shape-extra-small);
+	--m3-chip-shape: var(--m3-sys-shape-small);
+	--m3-snackbar-shape: var(--m3-sys-shape-extra-small);
+
 	/* ---- System: elevation (layered shadows, transition cost contained) ---- */
 	--m3-sys-elevation-0: none;
 	--m3-sys-elevation-1:
@@ -85,6 +106,13 @@
 		0 8px 12px 6px light-dark(rgb(0 0 0 / 0.15), rgb(0 0 0 / 0.3)),
 		0 4px 4px light-dark(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.5));
 
+	--m3-sys-elevation-level-0: 0;
+	--m3-sys-elevation-level-1: 1;
+	--m3-sys-elevation-level-2: 3;
+	--m3-sys-elevation-level-3: 6;
+	--m3-sys-elevation-level-4: 8;
+	--m3-sys-elevation-level-5: 12;
+
 	/* ---- System: typography — baseline + emphasized (Expressive dual scale) ---- */
 	--m3-sys-font: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 	--m3-sys-font-mono: ui-monospace, 'Cascadia Mono', 'Roboto Mono', Menlo, monospace;
@@ -92,6 +120,7 @@
 	--m3-sys-typescale-display-large: 3.5625rem; /* 57px */
 	--m3-sys-typescale-display-large-line: 1.12;
 	--m3-sys-typescale-display-large-weight: 400;
+	--m3-sys-typescale-display-large-tracking: -0.04386em;
 	--m3-sys-typescale-display-medium: 2.8125rem; /* 45px */
 	--m3-sys-typescale-display-medium-line: 1.16;
 	--m3-sys-typescale-display-medium-weight: 400;
@@ -112,6 +141,7 @@
 	--m3-sys-typescale-title-large: 1.375rem; /* 22px */
 	--m3-sys-typescale-title-large-line: 1.27;
 	--m3-sys-typescale-title-large-weight: 400;
+	--m3-sys-typescale-title-large-emphasized-weight: 500;
 	--m3-sys-typescale-title-medium: 1rem; /* 16px */
 	--m3-sys-typescale-title-medium-line: 1.5;
 	--m3-sys-typescale-title-medium-weight: 500;
@@ -124,15 +154,18 @@
 	--m3-sys-typescale-body-large: 1rem;
 	--m3-sys-typescale-body-large-line: 1.5;
 	--m3-sys-typescale-body-large-weight: 400;
+	--m3-sys-typescale-body-large-emphasized-weight: 500;
 	--m3-sys-typescale-body-large-tracking: 0.03125em;
 	--m3-sys-typescale-body-medium: 0.875rem;
 	--m3-sys-typescale-body-medium-line: 1.43;
 	--m3-sys-typescale-body-medium-weight: 400;
+	--m3-sys-typescale-body-medium-emphasized-weight: 500;
 	--m3-sys-typescale-body-medium-tracking: 0.01786em;
 	--m3-sys-typescale-body-small: 0.75rem;
 	--m3-sys-typescale-body-small-line: 1.33;
 	--m3-sys-typescale-body-small-weight: 400;
-	--m3-sys-typescale-body-small-tracking: 0.025em;
+	--m3-sys-typescale-body-small-emphasized-weight: 500;
+	--m3-sys-typescale-body-small-tracking: 0.03333em;
 
 	--m3-sys-typescale-label-large: 0.875rem;
 	--m3-sys-typescale-label-large-line: 1.43;
@@ -145,28 +178,48 @@
 	--m3-sys-typescale-label-small: 0.6875rem; /* 11px */
 	--m3-sys-typescale-label-small-line: 1.45;
 	--m3-sys-typescale-label-small-weight: 500;
-	--m3-sys-typescale-label-small-tracking: 0.00714em;
+	--m3-sys-typescale-label-small-tracking: 0.04545em;
 
 	/* Emphasized weights (Expressive: +100 weight for editorial moments) */
 	--m3-sys-typescale-emphasized-weight-delta: 100;
 
-	/* ---- Spacing (8dp system) ---- */
-	--m3-sys-space-1: 4px;
-	--m3-sys-space-2: 8px;
-	--m3-sys-space-3: 12px;
-	--m3-sys-space-4: 16px;
-	--m3-sys-space-5: 20px;
-	--m3-sys-space-6: 24px;
-	--m3-sys-space-8: 32px;
-	--m3-sys-space-10: 40px;
-	--m3-sys-space-12: 48px;
-	--m3-sys-space-16: 64px;
+	/* ---- Spacing (official M3 steps + legacy space-1..16 aliases) ---- */
+	--m3-sys-space-0: 0;
+	--m3-sys-space-25: 2px;
+	--m3-sys-space-50: 4px;
+	--m3-sys-space-75: 6px;
+	--m3-sys-space-100: 8px;
+	--m3-sys-space-125: 10px;
+	--m3-sys-space-150: 12px;
+	--m3-sys-space-175: 14px;
+	--m3-sys-space-200: 16px;
+	--m3-sys-space-250: 20px;
+	--m3-sys-space-300: 24px;
+	--m3-sys-space-400: 32px;
+	--m3-sys-space-450: 36px;
+	--m3-sys-space-500: 40px;
+	--m3-sys-space-600: 48px;
+	--m3-sys-space-700: 56px;
+	--m3-sys-space-800: 64px;
+	--m3-sys-space-900: 72px;
+	--m3-sys-space-1: var(--m3-sys-space-50);
+	--m3-sys-space-2: var(--m3-sys-space-100);
+	--m3-sys-space-3: var(--m3-sys-space-150);
+	--m3-sys-space-4: var(--m3-sys-space-200);
+	--m3-sys-space-5: var(--m3-sys-space-250);
+	--m3-sys-space-6: var(--m3-sys-space-300);
+	--m3-sys-space-8: var(--m3-sys-space-400);
+	--m3-sys-space-10: var(--m3-sys-space-500);
+	--m3-sys-space-12: var(--m3-sys-space-600);
+	--m3-sys-space-16: var(--m3-sys-space-800);
 
 	/* ---- State layer opacities (official MWC spec) ---- */
 	--m3-state-hover-opacity: 0.08;
-	--m3-state-focus-opacity: 0.12;
-	--m3-state-pressed-opacity: 0.12;
+	--m3-state-focus-opacity: 0.1;
+	--m3-state-pressed-opacity: 0.1;
 	--m3-state-dragged-opacity: 0.16;
+	--m3-state-disabled-container-opacity: 0.12;
+	--m3-state-disabled-content-opacity: 0.38;
 
 	/* ---- Density: default (opt-in compact via [data-density]) ---- */
 	--m3-density-scale: 1;

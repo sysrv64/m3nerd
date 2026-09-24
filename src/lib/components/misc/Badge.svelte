@@ -64,9 +64,9 @@ const show = $derived(dot || text.length > 0);
 		min-width: 16px;
 		height: 16px;
 		padding-inline: 4px;
-		border-radius: var(--m3-sys-shape-full);
-		background: var(--m3-sys-error-container);
-		color: var(--m3-sys-on-error-container);
+		border-radius: 8px;
+		background: var(--m3-sys-error);
+		color: var(--m3-sys-on-error);
 		font: var(--m3-sys-typescale-label-small-weight) var(--m3-sys-typescale-label-small) /
 			var(--m3-sys-typescale-label-small-line) var(--m3-sys-font);
 		line-height: 1;
@@ -76,17 +76,19 @@ const show = $derived(dot || text.length > 0);
 	}
 
 	.m3-badge.v-small {
-		min-width: 8px;
-		height: 8px;
+		min-width: 6px;
+		height: 6px;
 		padding: 0;
+		border-radius: 3px;
 		font-size: 0;
 	}
 
 	.m3-badge.dot {
-		min-width: 8px;
-		width: 8px;
-		height: 8px;
+		min-width: 6px;
+		width: 6px;
+		height: 6px;
 		padding: 0;
+		border-radius: 3px;
 		font-size: 0;
 	}
 </style>

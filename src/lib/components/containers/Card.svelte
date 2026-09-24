@@ -30,7 +30,7 @@ const interactive = $derived(tag === 'button' || tag === 'a' || Boolean(onclick)
 
 <svelte:element
 	this={tag}
-	class={cn('m3-card', `v-${variant}`, interactive && 'interactive', className)}
+	class={cn('m3-card', `v-${variant}`, interactive && 'interactive', interactive && 'm3-layer', className)}
 	{href}
 	onclick={tag === 'button' || tag === 'a' ? undefined : onclick}
 	type={tag === 'button' ? 'button' : undefined}
@@ -61,23 +61,20 @@ const interactive = $derived(tag === 'button' || tag === 'a' || Boolean(onclick)
 		box-shadow: var(--m3-sys-elevation-1);
 	}
 	.v-filled {
-		--_bg: var(--m3-sys-primary-container);
-		--_fg: var(--m3-sys-on-primary-container);
+		--_bg: var(--m3-sys-surface-container-highest);
+		--_fg: var(--m3-sys-on-surface);
 	}
 	.v-outlined {
 		--_bg: var(--m3-sys-surface);
 		box-shadow: inset 0 0 0 1px var(--m3-sys-outline-variant);
 	}
 	.v-tonal {
-		--_bg: var(--m3-sys-secondary-container);
-		--_fg: var(--m3-sys-on-secondary-container);
+		--_bg: var(--m3-sys-surface-container-highest);
+		--_fg: var(--m3-sys-on-surface);
 	}
 
 	.interactive {
 		cursor: pointer;
-	}
-	.interactive:hover {
-		--_bg: var(--m3-sys-surface-container);
 	}
 	.v-elevated.interactive:hover {
 		box-shadow: var(--m3-sys-elevation-2);

@@ -7,6 +7,7 @@ type Variant = 'standard' | 'filled' | 'tonal' | 'outlined';
 
 interface Props extends Omit<HTMLButtonAttributes, 'class' | 'children'> {
 	variant?: Variant;
+	size?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	/** Toggle semantics. */
 	selected?: boolean;
 	/** Renders as [aria-pressed] toggle instead of plain button. */
@@ -19,6 +20,7 @@ interface Props extends Omit<HTMLButtonAttributes, 'class' | 'children'> {
 
 let {
 	variant = 'standard',
+	size = 'm',
 	selected = false,
 	toggle = false,
 	class: className,
@@ -30,7 +32,15 @@ let {
 </script>
 
 <button
-	class={cn('m3-icon-btn', `v-${variant}`, selected && 'selected', className)}
+	class={cn(
+		'm3-icon-btn',
+		'm3-layer',
+		'm3-focus-outward',
+		`v-${variant}`,
+		`sz-${size}`,
+		selected && 'selected',
+		className
+	)}
 	{type}
 	aria-pressed={toggle ? selected : undefined}
 	aria-label={label}
@@ -42,7 +52,7 @@ let {
 
 <style>
 	.m3-icon-btn {
-		--_size: var(--m3-touch-target);
+		--_size: 40px;
 		--_shape: var(--m3-sys-shape-full);
 		position: relative;
 		display: inline-flex;
@@ -60,6 +70,26 @@ let {
 			background-color var(--m3-motion-fast),
 			color var(--m3-motion-fast);
 		-webkit-tap-highlight-color: transparent;
+	}
+
+	.m3-icon-btn::before {
+		content: '';
+		position: absolute;
+		inset: calc((48px - var(--_size)) / -2);
+	}
+
+	.sz-xs {
+		--_size: 32px;
+	}
+	.sz-s,
+	.sz-m {
+		--_size: 40px;
+	}
+	.sz-l {
+		--_size: 56px;
+	}
+	.sz-xl {
+		--_size: 96px;
 	}
 
 	.m3-icon-btn:disabled {

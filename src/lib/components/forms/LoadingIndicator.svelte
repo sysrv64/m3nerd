@@ -9,7 +9,7 @@ interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'class'> {
 }
 
 let {
-	size = 32,
+	size = 48,
 	class: className,
 	'aria-label': ariaLabel = 'Loading',
 	...rest
@@ -28,8 +28,8 @@ let {
 <style>
 	.m3-loading {
 		display: inline-block;
-		width: 32px;
-		height: 32px;
+		width: 48px;
+		height: 48px;
 		border-radius: var(--m3-sys-shape-medium);
 		background: var(--m3-sys-primary);
 		animation: m3-loading-morph 1.4s linear infinite;

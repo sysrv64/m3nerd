@@ -274,7 +274,7 @@
 			name: 'Button',
 			type: "'xs' | 's' | 'm' | 'l' | 'xl'",
 			def: "'m'",
-			desc: 'Size — height 32 to 72px'
+			desc: 'Size — Expressive heights 32 / 40 / 56 / 96 / 136px'
 		},
 		{
 			name: 'Button',

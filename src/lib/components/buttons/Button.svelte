@@ -24,7 +24,7 @@ export type Props = Common &
 
 let {
 	variant = 'filled',
-	size = 'm',
+	size = 's',
 	shape = 'medium',
 	icon = false,
 	class: className,
@@ -41,7 +41,7 @@ const tag = $derived(isLink ? 'a' : 'button');
 
 <svelte:element
 	this={tag}
-	class={cn('m3-btn', `v-${variant}`, `s-${size}`, `sh-${shape}`, icon && 'icon-only', className)}
+	class={cn('m3-btn', 'm3-layer', `v-${variant}`, `s-${size}`, `sh-${shape}`, icon && 'icon-only', className)}
 	{href}
 	type={isLink ? undefined : (type ?? 'button')}
 	aria-disabled={isLink && disabled ? 'true' : undefined}
@@ -59,6 +59,7 @@ const tag = $derived(isLink ? 'a' : 'button');
 		--_h: var(--m3-control-height);
 		--_px: 16px;
 		--_shape: var(--m3-sys-shape-full);
+		--_pressed-shape: var(--m3-sys-shape-large);
 		position: relative;
 		display: inline-flex;
 		align-items: center;
@@ -79,20 +80,38 @@ const tag = $derived(isLink ? 'a' : 'button');
 		transition:
 			background-color var(--m3-motion-fast),
 			color var(--m3-motion-fast),
-			border-color var(--m3-motion-fast),
-			transform var(--m3-motion-spatial-fast);
+			border-radius var(--m3-motion-spatial-fast);
 		-webkit-tap-highlight-color: transparent;
 	}
 
 	.m3-btn:active:not(:disabled, [data-disabled]) {
-		transform: scale(0.97);
+		border-radius: var(--_pressed-shape);
 	}
 
 	.m3-btn:disabled,
 	.m3-btn[data-disabled] {
 		cursor: default;
-		opacity: 0.38;
+		opacity: 1;
 		pointer-events: none;
+	}
+
+	.v-filled:disabled,
+	.v-tonal:disabled,
+	.v-elevated:disabled,
+	.v-filled[data-disabled],
+	.v-tonal[data-disabled],
+	.v-elevated[data-disabled] {
+		background-color: color-mix(in srgb, var(--m3-sys-on-surface) 12%, transparent);
+		color: color-mix(in srgb, var(--m3-sys-on-surface) 38%, transparent);
+		box-shadow: none;
+	}
+
+	.v-outlined:disabled,
+	.v-text:disabled,
+	.v-outlined[data-disabled],
+	.v-text[data-disabled] {
+		background-color: transparent;
+		color: color-mix(in srgb, var(--m3-sys-on-surface) 38%, transparent);
 	}
 
 	.m3-btn__label {
@@ -110,35 +129,41 @@ const tag = $derived(isLink ? 'a' : 'button');
 		font-size: var(--m3-sys-typescale-label-medium);
 	}
 	.s-s {
-		--_h: 36px;
+		--_h: 40px;
 		--_px: 12px;
 	}
 	.s-m {
-		--_h: 40px;
-	}
-	.s-l {
 		--_h: 56px;
 		--_px: 24px;
 		font-size: var(--m3-sys-typescale-title-medium);
 	}
+	.s-l {
+		--_h: 96px;
+		--_px: 48px;
+		font-size: var(--m3-sys-typescale-headline-small);
+	}
 	.s-xl {
-		--_h: 72px;
-		--_px: 32px;
-		font-size: var(--m3-sys-typescale-title-large);
+		--_h: 136px;
+		--_px: 64px;
+		font-size: var(--m3-sys-typescale-headline-large);
 	}
 
 	/* Shapes */
 	.sh-square {
 		--_shape: var(--m3-sys-shape-small);
+		--_pressed-shape: var(--m3-sys-shape-extra-small);
 	}
 	.sh-round {
 		--_shape: var(--m3-sys-shape-large);
+		--_pressed-shape: var(--m3-sys-shape-medium);
 	}
 	.sh-medium {
 		--_shape: var(--m3-sys-shape-medium);
+		--_pressed-shape: var(--m3-sys-shape-small);
 	}
 	.sh-full {
 		--_shape: var(--m3-sys-shape-full);
+		--_pressed-shape: var(--m3-sys-shape-large);
 	}
 
 	.icon-only {
@@ -164,10 +189,20 @@ const tag = $derived(isLink ? 'a' : 'button');
 	.v-elevated:hover:not(:disabled, [data-disabled]) {
 		box-shadow: var(--m3-sys-elevation-2);
 	}
+	.v-filled:hover:not(:disabled, [data-disabled]),
+	.v-tonal:hover:not(:disabled, [data-disabled]) {
+		box-shadow: var(--m3-sys-elevation-1);
+	}
 	.v-outlined {
 		background: transparent;
 		color: var(--m3-sys-on-surface);
 		box-shadow: inset 0 0 0 1px var(--m3-sys-outline-variant);
+	}
+	.s-l.v-outlined {
+		box-shadow: inset 0 0 0 2px var(--m3-sys-outline-variant);
+	}
+	.s-xl.v-outlined {
+		box-shadow: inset 0 0 0 3px var(--m3-sys-outline-variant);
 	}
 	.v-text {
 		background: transparent;

@@ -100,7 +100,7 @@
 	.m3-type-display-large {
 		font: var(--m3-sys-typescale-display-large-weight) var(--m3-sys-typescale-display-large) /
 			var(--m3-sys-typescale-display-large-line) var(--m3-sys-font);
-		letter-spacing: normal;
+		letter-spacing: var(--m3-sys-typescale-display-large-tracking);
 	}
 
 	.m3-type-display-medium {

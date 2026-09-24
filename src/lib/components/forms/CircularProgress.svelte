@@ -83,7 +83,7 @@ const ariaValue = $derived(
 	}
 
 	.m3-circular__track {
-		stroke: var(--m3-sys-surface-container-highest);
+		stroke: var(--m3-sys-secondary-container);
 	}
 
 	.m3-circular__indicator {

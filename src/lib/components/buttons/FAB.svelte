@@ -32,6 +32,7 @@ let {
 <button
 	class={cn(
 		'm3-fab',
+		'm3-layer',
 		extended && 'extended',
 		`sz-${size}`,
 		secondary && 'secondary',
@@ -49,6 +50,7 @@ let {
 	.m3-fab {
 		--_h: 56px;
 		--_shape: var(--m3-sys-shape-large);
+		--_pressed-shape: var(--m3-sys-shape-medium);
 		position: relative;
 		display: inline-flex;
 		align-items: center;
@@ -67,11 +69,15 @@ let {
 			var(--m3-sys-typescale-label-large-line) var(--m3-sys-font);
 		transition:
 			background-color var(--m3-motion-fast),
-			transform var(--m3-motion-spatial-fast);
+			border-radius var(--m3-motion-spatial-fast);
 	}
 
-	.m3-fab:active {
-		transform: scale(0.96);
+	.m3-fab:hover:not(:disabled) {
+		box-shadow: var(--m3-sys-elevation-4);
+	}
+
+	.m3-fab:active:not(:disabled) {
+		border-radius: var(--_pressed-shape);
 	}
 
 	.m3-fab:disabled {
@@ -90,6 +96,7 @@ let {
 	.m3-fab.extended {
 		padding-inline: 20px;
 		--_shape: var(--m3-sys-shape-full);
+		--_pressed-shape: var(--m3-sys-shape-large);
 	}
 
 	.sz-s {
@@ -99,6 +106,7 @@ let {
 		--_h: 96px;
 		min-width: 96px;
 		--_shape: var(--m3-sys-shape-extra-large);
+		--_pressed-shape: var(--m3-sys-shape-large);
 		font-size: var(--m3-sys-typescale-title-medium);
 	}
 
@@ -110,6 +118,10 @@ let {
 	.plain {
 		background: var(--m3-sys-surface-container-high);
 		color: var(--m3-sys-primary);
+		box-shadow: none;
+	}
+
+	.plain:hover:not(:disabled) {
 		box-shadow: none;
 	}
 </style>

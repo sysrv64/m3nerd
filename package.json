@@ -37,7 +37,9 @@
       "default": "./package/index.js"
     },
     "./styles.css": {
-      "style": "./package/styles.css"
+      "style": "./package/styles.css",
+      "css": "./package/styles.css",
+      "default": "./package/styles.css"
     },
     "./package.json": "./package.json"
   },

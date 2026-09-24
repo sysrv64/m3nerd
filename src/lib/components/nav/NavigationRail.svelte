@@ -64,9 +64,9 @@ function activate(item: NavItem) {
 	<div class="rail-items">
 		{#each items as item (item.id)}
 			{#if item.href}
-				<a
-					class="rail-item"
-					href={item.disabled ? undefined : item.href}
+			<a
+				class="rail-item m3-layer"
+				href={item.disabled ? undefined : item.href}
 					aria-current={item.id === activeId ? 'page' : undefined}
 					aria-disabled={item.disabled || undefined}
 					data-active={item.id === activeId}
@@ -81,10 +81,10 @@ function activate(item: NavItem) {
 					{/if}
 				</a>
 			{:else}
-				<button
-					type="button"
-					class="rail-item"
-					disabled={item.disabled}
+			<button
+				type="button"
+				class="rail-item m3-layer"
+				disabled={item.disabled}
 					aria-current={item.id === activeId ? 'page' : undefined}
 					data-active={item.id === activeId}
 					title={item.label}

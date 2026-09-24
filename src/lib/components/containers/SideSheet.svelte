@@ -125,7 +125,7 @@
 	}
 
 	.m3-side-sheet.modal {
-		box-shadow: var(--m3-sys-elevation-3);
+		box-shadow: var(--m3-sys-elevation-1);
 	}
 
 	.m3-side-sheet__header {

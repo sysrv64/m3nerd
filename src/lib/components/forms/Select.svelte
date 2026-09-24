@@ -435,7 +435,7 @@ $effect(() => {
 		position: relative;
 		display: flex;
 		align-items: center;
-		min-height: var(--m3-row-height);
+		min-height: 48px;
 		padding: 0 16px;
 		cursor: pointer;
 		user-select: none;
@@ -450,8 +450,8 @@ $effect(() => {
 	}
 
 	.m3-select__option.selected {
-		background: var(--m3-sys-secondary-container);
-		color: var(--m3-sys-on-secondary-container);
+		background: var(--m3-sys-primary-container);
+		color: var(--m3-sys-on-primary-container);
 		font-weight: 500;
 	}
 

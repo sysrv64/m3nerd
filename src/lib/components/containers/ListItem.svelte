@@ -3,42 +3,55 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { cn } from '../../utils/cn.js';
 
-	interface Props extends Omit<HTMLAttributes<HTMLElement>, 'class' | 'children'> {
-		as?: 'div' | 'button' | 'a';
-		href?: string;
-		onclick?: (e: MouseEvent) => void;
-		headline?: string;
-		supporting?: string | Snippet;
-		trailing?: Snippet;
-		trailingText?: string;
-		leading?: Snippet;
-		overline?: string;
-		class?: string;
-		children?: Snippet;
-	}
+interface Props extends Omit<HTMLAttributes<HTMLElement>, 'class' | 'children'> {
+	as?: 'div' | 'button' | 'a';
+	href?: string;
+	onclick?: (e: MouseEvent) => void;
+	headline?: string;
+	supporting?: string | Snippet;
+	trailing?: Snippet;
+	trailingText?: string;
+	leading?: Snippet;
+	overline?: string;
+	lines?: 1 | 2 | 3;
+	class?: string;
+	children?: Snippet;
+}
 
-	let {
-		as,
-		href,
-		onclick,
-		headline,
-		supporting,
-		trailing,
-		trailingText,
-		leading,
-		overline,
-		class: className,
-		children,
-		...rest
-	}: Props = $props();
+let {
+	as,
+	href,
+	onclick,
+	headline,
+	supporting,
+	trailing,
+	trailingText,
+	leading,
+	overline,
+	lines,
+	class: className,
+	children,
+	...rest
+}: Props = $props();
 
-	const tag = $derived(as ?? (href ? 'a' : onclick ? 'button' : 'div'));
-	const interactive = $derived(tag === 'button' || tag === 'a' || Boolean(onclick));
+const tag = $derived(as ?? (href ? 'a' : onclick ? 'button' : 'div'));
+const interactive = $derived(tag === 'button' || tag === 'a' || Boolean(onclick));
+const lineCount = $derived(
+	lines ?? (supporting ? (overline ? 3 : 2) : overline ? 2 : 1)
+);
+const hasTrailing = $derived(Boolean(trailing || trailingText));
 </script>
 
 <svelte:element
 	this={tag}
-	class={cn('m3-list-item', 'm3-layer', interactive && 'interactive', className)}
+	class={cn(
+		'm3-list-item',
+		'm3-layer',
+		interactive && 'interactive',
+		`lines-${lineCount}`,
+		hasTrailing && 'has-trailing',
+		className
+	)}
 	{href}
 	type={tag === 'button' ? 'button' : undefined}
 	onclick={onclick}
@@ -88,7 +101,6 @@
 		justify-content: center;
 		gap: var(--m3-sys-space-1);
 		width: 100%;
-		min-height: var(--m3-row-height);
 		padding: var(--m3-sys-space-2) var(--m3-sys-space-4);
 		border: none;
 		border-radius: 0;
@@ -98,6 +110,20 @@
 		text-decoration: none;
 		transition: background-color var(--m3-motion-fast);
 		-webkit-tap-highlight-color: transparent;
+	}
+
+	.lines-1 {
+		min-height: 56px;
+	}
+	.lines-2 {
+		min-height: 72px;
+	}
+	.lines-3 {
+		min-height: 88px;
+	}
+
+	.m3-list-item.has-trailing {
+		padding-inline-end: var(--m3-sys-space-6);
 	}
 
 	.m3-list-item.interactive {
@@ -133,6 +159,7 @@
 		display: inline-flex;
 		align-items: center;
 		flex-shrink: 0;
+		min-width: 40px;
 	}
 
 	.m3-list-item__text {

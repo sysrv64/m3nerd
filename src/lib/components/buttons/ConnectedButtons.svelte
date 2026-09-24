@@ -30,23 +30,18 @@ let { connected = true, class: className, children, label, ...rest }: Props = $p
 		align-items: center;
 	}
 
+	.m3-btn-group.connected {
+		display: inline-grid;
+		grid-auto-flow: column;
+		gap: 0.125rem;
+		background: var(--m3-sys-outline-variant);
+		border-radius: var(--m3-sys-shape-full);
+		overflow: hidden;
+	}
+
 	.m3-btn-group.connected :global(.m3-btn) {
 		border-radius: 0;
 		box-shadow: none;
-	}
-
-	.m3-btn-group.connected :global(.m3-btn:first-child) {
-		border-start-start-radius: var(--m3-sys-shape-full);
-		border-end-start-radius: var(--m3-sys-shape-full);
-	}
-
-	.m3-btn-group.connected :global(.m3-btn:last-child) {
-		border-start-end-radius: var(--m3-sys-shape-full);
-		border-end-end-radius: var(--m3-sys-shape-full);
-	}
-
-	.m3-btn-group.connected :global(.m3-btn + .m3-btn) {
-		box-shadow: inset 1px 0 0 0 var(--m3-sys-outline-variant);
 	}
 
 	/* Stack vertically on compact widths when the group is wide */

@@ -1,0 +1,197 @@
+/*
+ * M3Nerd design tokens — Material 3 Expressive reference/system/component layers.
+ * Pure CSS custom properties. No runtime. light-dark() for themes.
+ * Sources: m3.material.io color roles, corner-radius-scale, type-scale-tokens, elevation.
+ */
+
+:root {
+	color-scheme: light dark;
+
+	/* ---- Reference: palettes (HCT-derived; prebuilt baseline) ---- */
+	color: light-dark(#1b1b1f, #e6e0e9);
+	background: light-dark(#fef7ff, #141218);
+
+	/* ---- System: color roles ---- */
+	--m3-sys-primary: light-dark(#006a6a, #4fd8eb);
+	--m3-sys-on-primary: light-dark(#ffffff, #003737);
+	--m3-sys-primary-container: light-dark(#6ff7f7, #004f52);
+	--m3-sys-on-primary-container: light-dark(#002020, #9df1f1);
+
+	--m3-sys-secondary: light-dark(#4a6362, #b0ccca);
+	--m3-sys-on-secondary: light-dark(#ffffff, #053634);
+	--m3-sys-secondary-container: light-dark(#cce8e6, #2c4e4c);
+	--m3-sys-on-secondary-container: light-dark(#053634, #cce8e6);
+
+	--m3-sys-tertiary: light-dark(#4b607c, #b3c9e9);
+	--m3-sys-on-tertiary: light-dark(#ffffff, #13293d);
+	--m3-sys-tertiary-container: light-dark(#d3e3ff, #2f465f);
+	--m3-sys-on-tertiary-container: light-dark(#041d36, #d3e3ff);
+
+	--m3-sys-error: light-dark(#ba1a1a, #ffb4ab);
+	--m3-sys-on-error: light-dark(#ffffff, #690005);
+	--m3-sys-error-container: light-dark(#ffdad6, #93000a);
+	--m3-sys-on-error-container: light-dark(#410002, #ffdad6);
+
+	--m3-sys-surface: light-dark(#fef7ff, #141218);
+	--m3-sys-on-surface: light-dark(#1b1b1f, #e6e0e9);
+	--m3-sys-surface-variant: light-dark(#dfe3e8, #c4c7c5);
+	--m3-sys-on-surface-variant: light-dark(#41484d, #c4c7c5);
+
+	--m3-sys-surface-dim: light-dark(#dbd9dd, #3b393e);
+	--m3-sys-surface-bright: light-dark(#fef7ff, #3b393e);
+	--m3-sys-surface-container-lowest: light-dark(#ffffff, #0f0d13);
+	--m3-sys-surface-container-low: light-dark(#f5f2f6, #1d1b20);
+	--m3-sys-surface-container: light-dark(#efedf1, #211f26);
+	--m3-sys-surface-container-high: light-dark(#e9e7eb, #2b292f);
+	--m3-sys-surface-container-highest: light-dark(#e3e1e5, #36343b);
+
+	--m3-sys-outline: light-dark(#71787d, #8e9099);
+	--m3-sys-outline-variant: light-dark(#c0c7cc, #41484d);
+
+	--m3-sys-inverse-surface: light-dark(#303034, #e6e0e9);
+	--m3-sys-inverse-on-surface: light-dark(#f2f0f4, #303034);
+	--m3-sys-inverse-primary: light-dark(#4fd8eb, #006a6a);
+
+	--m3-sys-shadow: light-dark(#000000, #000000);
+	--m3-sys-scrim: light-dark(#000000, #000000);
+
+	/* ---- System: shape — 10-step corner radius scale (Expressive) ---- */
+	--m3-sys-shape-none: 0px;
+	--m3-sys-shape-extra-small: 4px;
+	--m3-sys-shape-small: 8px;
+	--m3-sys-shape-medium: 12px;
+	--m3-sys-shape-large: 16px;
+	--m3-sys-shape-large-increased: 20px;
+	--m3-sys-shape-extra-large: 28px;
+	--m3-sys-shape-extra-large-increased: 32px;
+	--m3-sys-shape-extra-extra-large: 48px;
+	--m3-sys-shape-full: 9999px;
+
+	/* ---- System: elevation (layered shadows, transition cost contained) ---- */
+	--m3-sys-elevation-0: none;
+	--m3-sys-elevation-1:
+		0 1px 2px light-dark(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.5)), 0 1px 3px 1px
+		light-dark(rgb(0 0 0 / 0.15), rgb(0 0 0 / 0.3));
+	--m3-sys-elevation-2:
+		0 1px 2px light-dark(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.5)), 0 2px 6px 2px
+		light-dark(rgb(0 0 0 / 0.15), rgb(0 0 0 / 0.3));
+	--m3-sys-elevation-3:
+		0 4px 8px 3px light-dark(rgb(0 0 0 / 0.15), rgb(0 0 0 / 0.3)),
+		0 1px 3px light-dark(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.5));
+	--m3-sys-elevation-4:
+		0 6px 10px 4px light-dark(rgb(0 0 0 / 0.15), rgb(0 0 0 / 0.3)),
+		0 2px 3px light-dark(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.5));
+	--m3-sys-elevation-5:
+		0 8px 12px 6px light-dark(rgb(0 0 0 / 0.15), rgb(0 0 0 / 0.3)),
+		0 4px 4px light-dark(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.5));
+
+	/* ---- System: typography — baseline + emphasized (Expressive dual scale) ---- */
+	--m3-sys-font: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	--m3-sys-font-mono: ui-monospace, 'Cascadia Mono', 'Roboto Mono', Menlo, monospace;
+
+	--m3-sys-typescale-display-large: 3.5625rem; /* 57px */
+	--m3-sys-typescale-display-large-line: 1.12;
+	--m3-sys-typescale-display-large-weight: 400;
+	--m3-sys-typescale-display-medium: 2.8125rem; /* 45px */
+	--m3-sys-typescale-display-medium-line: 1.16;
+	--m3-sys-typescale-display-medium-weight: 400;
+	--m3-sys-typescale-display-small: 2.25rem; /* 36px */
+	--m3-sys-typescale-display-small-line: 1.22;
+	--m3-sys-typescale-display-small-weight: 400;
+
+	--m3-sys-typescale-headline-large: 2rem; /* 32px */
+	--m3-sys-typescale-headline-large-line: 1.25;
+	--m3-sys-typescale-headline-large-weight: 400;
+	--m3-sys-typescale-headline-medium: 1.75rem; /* 28px */
+	--m3-sys-typescale-headline-medium-line: 1.29;
+	--m3-sys-typescale-headline-medium-weight: 400;
+	--m3-sys-typescale-headline-small: 1.5rem; /* 24px */
+	--m3-sys-typescale-headline-small-line: 1.33;
+	--m3-sys-typescale-headline-small-weight: 400;
+
+	--m3-sys-typescale-title-large: 1.375rem; /* 22px */
+	--m3-sys-typescale-title-large-line: 1.27;
+	--m3-sys-typescale-title-large-weight: 400;
+	--m3-sys-typescale-title-medium: 1rem; /* 16px */
+	--m3-sys-typescale-title-medium-line: 1.5;
+	--m3-sys-typescale-title-medium-weight: 500;
+	--m3-sys-typescale-title-medium-tracking: 0.00938em;
+	--m3-sys-typescale-title-small: 0.875rem; /* 14px */
+	--m3-sys-typescale-title-small-line: 1.43;
+	--m3-sys-typescale-title-small-weight: 500;
+	--m3-sys-typescale-title-small-tracking: 0.00714em;
+
+	--m3-sys-typescale-body-large: 1rem;
+	--m3-sys-typescale-body-large-line: 1.5;
+	--m3-sys-typescale-body-large-weight: 400;
+	--m3-sys-typescale-body-large-tracking: 0.03125em;
+	--m3-sys-typescale-body-medium: 0.875rem;
+	--m3-sys-typescale-body-medium-line: 1.43;
+	--m3-sys-typescale-body-medium-weight: 400;
+	--m3-sys-typescale-body-medium-tracking: 0.01786em;
+	--m3-sys-typescale-body-small: 0.75rem;
+	--m3-sys-typescale-body-small-line: 1.33;
+	--m3-sys-typescale-body-small-weight: 400;
+	--m3-sys-typescale-body-small-tracking: 0.025em;
+
+	--m3-sys-typescale-label-large: 0.875rem;
+	--m3-sys-typescale-label-large-line: 1.43;
+	--m3-sys-typescale-label-large-weight: 500;
+	--m3-sys-typescale-label-large-tracking: 0.00714em;
+	--m3-sys-typescale-label-medium: 0.75rem;
+	--m3-sys-typescale-label-medium-line: 1.33;
+	--m3-sys-typescale-label-medium-weight: 500;
+	--m3-sys-typescale-label-medium-tracking: 0.04167em;
+	--m3-sys-typescale-label-small: 0.6875rem; /* 11px */
+	--m3-sys-typescale-label-small-line: 1.45;
+	--m3-sys-typescale-label-small-weight: 500;
+	--m3-sys-typescale-label-small-tracking: 0.00714em;
+
+	/* Emphasized weights (Expressive: +100 weight for editorial moments) */
+	--m3-sys-typescale-emphasized-weight-delta: 100;
+
+	/* ---- Spacing (8dp system) ---- */
+	--m3-sys-space-1: 4px;
+	--m3-sys-space-2: 8px;
+	--m3-sys-space-3: 12px;
+	--m3-sys-space-4: 16px;
+	--m3-sys-space-5: 20px;
+	--m3-sys-space-6: 24px;
+	--m3-sys-space-8: 32px;
+	--m3-sys-space-10: 40px;
+	--m3-sys-space-12: 48px;
+	--m3-sys-space-16: 64px;
+
+	/* ---- State layer opacities (official MWC spec) ---- */
+	--m3-state-hover-opacity: 0.08;
+	--m3-state-focus-opacity: 0.12;
+	--m3-state-pressed-opacity: 0.12;
+	--m3-state-dragged-opacity: 0.16;
+
+	/* ---- Density: default (opt-in compact via [data-density]) ---- */
+	--m3-density-scale: 1;
+	--m3-control-height: calc(40px * var(--m3-density-scale));
+	--m3-touch-target: 48px;
+	--m3-row-height: calc(56px * var(--m3-density-scale));
+}
+
+/* Opt-in density: each compact step ≈ −4px on control metrics (legacy M2 convention). */
+[data-density='compact'] {
+	--m3-density-scale: 0.875;
+	--m3-row-height: 48px;
+}
+
+[data-density='spacious'] {
+	--m3-density-scale: 1.125;
+	--m3-row-height: 64px;
+}
+
+/* ---- TV / 10-foot focus mode: scale targets and focus indicators ---- */
+[data-focus-mode='tv'] {
+	--m3-touch-target: 64px;
+	--m3-control-height: 52px;
+	--m3-row-height: 72px;
+	--m3-focus-scale: 1.05;
+	--m3-sys-typescale-body-large: 1.125rem;
+	--m3-sys-typescale-label-large: 1rem;
+}

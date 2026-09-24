@@ -1,0 +1,74 @@
+{
+  "name": "m3nerd",
+  "version": "0.1.0",
+  "description": "Material 3 Expressive component library for Svelte 5 — fast, adaptive across phone, tablet, notebook, and TV",
+  "license": "MIT",
+  "type": "module",
+  "author": "sysrv64",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sysrv64/m3nerd.git"
+  },
+  "homepage": "https://kerneldroid.github.io/m3nerd",
+  "keywords": [
+    "svelte",
+    "svelte5",
+    "material-design",
+    "material3",
+    "m3",
+    "expressive",
+    "ui",
+    "component-library",
+    "adaptive",
+    "design-tokens"
+  ],
+  "svelte": "./package/index.js",
+  "types": "./package/index.d.ts",
+  "files": [
+    "package",
+    "!package/**/*.test.*",
+    "!package/**/*.spec.*"
+  ],
+  "exports": {
+    ".": {
+      "types": "./package/index.d.ts",
+      "svelte": "./package/index.js",
+      "import": "./package/index.js",
+      "default": "./package/index.js"
+    },
+    "./styles.css": {
+      "style": "./package/styles.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "package": "svelte-kit sync && svelte-package -o package && publint",
+    "prepack": "npm run package",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "clean": "rm -rf package .svelte-kit build"
+  },
+  "peerDependencies": {
+    "svelte": "^5.46.4"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^3.0.8",
+    "@sveltejs/kit": "^2.70.3",
+    "@sveltejs/package": "^2.5.8",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "publint": "^0.3.14",
+    "svelte": "^5.57.1",
+    "svelte-check": "^4.3.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

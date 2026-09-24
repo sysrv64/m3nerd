@@ -1,0 +1,65 @@
+/*
+ * M3Nerd motion — Material 3 Expressive motion physics as CSS.
+ * Springs approximated with official cubic-bezier + duration pairs (m3.material.io
+ * styles/motion/overview/specs) and linear() stop lists for spatial overshoot.
+ * Spatial may overshoot; effects (color/opacity) are critically damped — never overshoot.
+ */
+
+:root {
+	/* Official spring → web conversions */
+	--m3-sys-motion-spring-expressive-fast-spatial: cubic-bezier(0.42, 1.67, 0.21, 0.9);
+	--m3-sys-motion-spring-expressive-default-spatial: cubic-bezier(0.38, 1.21, 0.22, 1);
+	--m3-sys-motion-spring-expressive-slow-spatial: cubic-bezier(0.39, 1.29, 0.35, 0.98);
+	--m3-sys-motion-spring-expressive-fast-effects: cubic-bezier(0.31, 0.94, 0.34, 1);
+	--m3-sys-motion-spring-expressive-default-effects: cubic-bezier(0.34, 0.8, 0.34, 1);
+	--m3-sys-motion-spring-expressive-slow-effects: cubic-bezier(0.34, 0.88, 0.34, 1);
+
+	--m3-sys-motion-spring-standard-fast-spatial: cubic-bezier(0.27, 1.06, 0.18, 1);
+	--m3-sys-motion-spring-standard-default-spatial: cubic-bezier(0.27, 1.06, 0.18, 1);
+	--m3-sys-motion-spring-standard-slow-spatial: cubic-bezier(0.27, 1.06, 0.18, 1);
+
+	--m3-sys-motion-duration-fast: 150ms;
+	--m3-sys-motion-duration-default: 200ms;
+	--m3-sys-motion-duration-slow: 300ms;
+	--m3-sys-motion-duration-spatial-fast: 350ms;
+	--m3-sys-motion-duration-spatial-default: 500ms;
+	--m3-sys-motion-duration-spatial-slow: 650ms;
+
+	/* Composite tokens: components consume these, never raw beziers */
+	--m3-motion-fast: var(--m3-sys-motion-duration-fast)
+		var(--m3-sys-motion-spring-expressive-fast-effects);
+	--m3-motion-default: var(--m3-sys-motion-duration-default)
+		var(--m3-sys-motion-spring-expressive-default-effects);
+	--m3-motion-slow: var(--m3-sys-motion-duration-slow)
+		var(--m3-sys-motion-spring-expressive-slow-effects);
+	--m3-motion-spatial-fast: var(--m3-sys-motion-duration-spatial-fast)
+		var(--m3-sys-motion-spring-expressive-fast-spatial);
+	--m3-motion-spatial-default: var(--m3-sys-motion-duration-spatial-default)
+		var(--m3-sys-motion-spring-expressive-default-spatial);
+	--m3-motion-spatial-slow: var(--m3-sys-motion-duration-spatial-slow)
+		var(--m3-sys-motion-spring-expressive-slow-spatial);
+
+	/* Standard scheme (calmer) for non-hero surfaces */
+	--m3-motion-standard-fast: var(--m3-sys-motion-duration-fast)
+		var(--m3-sys-motion-spring-standard-fast-spatial);
+	--m3-motion-standard-default: var(--m3-sys-motion-duration-default)
+		var(--m3-sys-motion-spring-standard-default-spatial);
+
+	/* Emphasized legacy easings (still official for transitions) */
+	--m3-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+	--m3-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+	--m3-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--m3-motion-fast: 1ms linear;
+		--m3-motion-default: 1ms linear;
+		--m3-motion-slow: 1ms linear;
+		--m3-motion-spatial-fast: 1ms linear;
+		--m3-motion-spatial-default: 1ms linear;
+		--m3-motion-spatial-slow: 1ms linear;
+		--m3-motion-standard-fast: 1ms linear;
+		--m3-motion-standard-default: 1ms linear;
+	}
+}

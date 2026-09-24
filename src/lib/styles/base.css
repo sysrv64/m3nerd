@@ -1,0 +1,164 @@
+/*
+ * M3Nerd base reset + shared primitives (state layers, focus rings).
+ * Import once: import 'm3nerd/styles.css'
+ */
+
+@layer m3nerd.base {
+	*,
+	::before,
+	::after {
+		box-sizing: border-box;
+	}
+
+	.m3-layer {
+		position: relative;
+		isolation: isolate;
+	}
+
+	/* Pure-CSS state layer: opacity-only paint, composited — no layout, no SVG filters */
+	.m3-layer::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		background: currentColor;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity var(--m3-motion-fast);
+		z-index: 0;
+	}
+
+	.m3-layer:hover:not(:disabled):not([aria-disabled='true'])::after {
+		opacity: var(--m3-state-hover-opacity);
+	}
+
+	.m3-layer:focus-visible::after {
+		opacity: var(--m3-state-focus-opacity);
+	}
+
+	.m3-layer:active:not(:disabled):not([aria-disabled='true'])::after {
+		opacity: var(--m3-state-pressed-opacity);
+	}
+
+	@media (hover: none) {
+		.m3-layer:hover::after {
+			opacity: 0;
+		}
+		.m3-layer:active::after {
+			opacity: var(--m3-state-pressed-opacity);
+		}
+	}
+
+	/* Content sits above state layer without z-index games on every child */
+	.m3-layer > :not(::after) {
+		position: relative;
+		z-index: 1;
+	}
+
+	.m3-focus-outward:focus-visible {
+		outline: 3px solid var(--m3-sys-primary);
+		outline-offset: 2px;
+	}
+
+	.m3-focus-inward:focus-visible {
+		outline: 3px solid var(--m3-sys-primary);
+		outline-offset: -3px;
+	}
+
+	.m3-visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.m3-type-display-large {
+		font: var(--m3-sys-typescale-display-large-weight) var(--m3-sys-typescale-display-large) /
+			var(--m3-sys-typescale-display-large-line) var(--m3-sys-font);
+		letter-spacing: normal;
+	}
+
+	.m3-type-display-medium {
+		font: var(--m3-sys-typescale-display-medium-weight) var(--m3-sys-typescale-display-medium) /
+			var(--m3-sys-typescale-display-medium-line) var(--m3-sys-font);
+	}
+
+	.m3-type-display-small {
+		font: var(--m3-sys-typescale-display-small-weight) var(--m3-sys-typescale-display-small) /
+			var(--m3-sys-typescale-display-small-line) var(--m3-sys-font);
+	}
+
+	.m3-type-headline-large {
+		font: var(--m3-sys-typescale-headline-large-weight) var(--m3-sys-typescale-headline-large) /
+			var(--m3-sys-typescale-headline-large-line) var(--m3-sys-font);
+	}
+
+	.m3-type-headline-medium {
+		font: var(--m3-sys-typescale-headline-medium-weight)
+			var(--m3-sys-typescale-headline-medium) / var(--m3-sys-typescale-headline-medium-line)
+			var(--m3-sys-font);
+	}
+
+	.m3-type-headline-small {
+		font: var(--m3-sys-typescale-headline-small-weight) var(--m3-sys-typescale-headline-small) /
+			var(--m3-sys-typescale-headline-small-line) var(--m3-sys-font);
+	}
+
+	.m3-type-title-large {
+		font: var(--m3-sys-typescale-title-large-weight) var(--m3-sys-typescale-title-large) /
+			var(--m3-sys-typescale-title-large-line) var(--m3-sys-font);
+	}
+
+	.m3-type-title-medium {
+		font: var(--m3-sys-typescale-title-medium-weight) var(--m3-sys-typescale-title-medium) /
+			var(--m3-sys-typescale-title-medium-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-title-medium-tracking);
+	}
+
+	.m3-type-title-small {
+		font: var(--m3-sys-typescale-title-small-weight) var(--m3-sys-typescale-title-small) /
+			var(--m3-sys-typescale-title-small-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-title-small-tracking);
+	}
+
+	.m3-type-body-large {
+		font: var(--m3-sys-typescale-body-large-weight) var(--m3-sys-typescale-body-large) /
+			var(--m3-sys-typescale-body-large-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-body-large-tracking);
+	}
+
+	.m3-type-body-medium {
+		font: var(--m3-sys-typescale-body-medium-weight) var(--m3-sys-typescale-body-medium) /
+			var(--m3-sys-typescale-body-medium-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-body-medium-tracking);
+	}
+
+	.m3-type-body-small {
+		font: var(--m3-sys-typescale-body-small-weight) var(--m3-sys-typescale-body-small) /
+			var(--m3-sys-typescale-body-small-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-body-small-tracking);
+	}
+
+	.m3-type-label-large {
+		font: var(--m3-sys-typescale-label-large-weight) var(--m3-sys-typescale-label-large) /
+			var(--m3-sys-typescale-label-large-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-label-large-tracking);
+	}
+
+	.m3-type-label-medium {
+		font: var(--m3-sys-typescale-label-medium-weight) var(--m3-sys-typescale-label-medium) /
+			var(--m3-sys-typescale-label-medium-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-label-medium-tracking);
+	}
+
+	.m3-type-label-small {
+		font: var(--m3-sys-typescale-label-small-weight) var(--m3-sys-typescale-label-small) /
+			var(--m3-sys-typescale-label-small-line) var(--m3-sys-font);
+		letter-spacing: var(--m3-sys-typescale-label-small-tracking);
+	}
+}

@@ -1,0 +1,63 @@
+/*
+ * M3Nerd adaptive foundation.
+ * Breakpoints (m3.material.io/foundations/layout/breakpoints/overview):
+ *   compact < 600 | medium 600–839 | expanded 840–1199 | large 1200–1599 | xlarge ≥ 1600
+ * Exposed as CSS vars on html so any component can branch without JS observers.
+ * TV mode: [data-focus-mode="tv"] (set by user or auto via pointer:coarse + large width heuristic).
+ */
+
+:root {
+	--m3-bp-medium: 600px;
+	--m3-bp-expanded: 840px;
+	--m3-bp-large: 1200px;
+	--m3-bp-xlarge: 1600px;
+
+	--m3-layout-max-width: 1440px;
+	--m3-layout-gutter: var(--m3-sys-space-4);
+	--m3-content-max-chars: 60;
+
+	/* Density adapts: denser rows on expanded+ where space allows comparison */
+	--m3-nav-height: 80px;
+	--m3-rail-width: 80px;
+	--m3-rail-width-expanded: 256px;
+	--m3-drawer-width: 360px;
+	--m3-pane-supporting: 360px;
+}
+
+@media (min-width: 600px) {
+	:root {
+		--m3-layout-gutter: var(--m3-sys-space-6);
+	}
+}
+
+@media (min-width: 840px) {
+	:root {
+		--m3-layout-gutter: var(--m3-sys-space-8);
+	}
+}
+
+@media (min-width: 1200px) {
+	:root {
+		--m3-layout-gutter: var(--m3-sys-space-10);
+	}
+}
+
+/* Line length discipline: 40–60ch body copy at all widths */
+.m3-prose {
+	max-width: min(100%, calc(var(--m3-content-max-chars) * 1ch));
+}
+
+/* Focus system — first-class for keyboard + TV (scale/glow, not hover-only) */
+:where(a, button, [role='button'], [tabindex]):focus-visible {
+	outline: 3px solid var(--m3-sys-primary);
+	outline-offset: 2px;
+	border-radius: var(--m3-focus-radius, var(--m3-sys-shape-small));
+}
+
+[data-focus-mode='tv'] :where(a, button, [role='button'], [tabindex]):focus-visible {
+	outline-width: 4px;
+	outline-offset: 4px;
+	box-shadow: 0 0 0 6px color-mix(in srgb, var(--m3-sys-primary) 35%, transparent);
+	transform: scale(var(--m3-focus-scale, 1.05));
+	transition: transform var(--m3-motion-spatial-fast);
+}

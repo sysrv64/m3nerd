@@ -35,10 +35,24 @@
 	}: Props = $props();
 
 	let panelEl = $state<HTMLDivElement | null>(null);
+	let wasOpen = false;
 
 	setContext('m3-menu', {
 		close: () => {
 			open = false;
+		}
+	});
+
+	$effect(() => {
+		if (open) {
+			wasOpen = true;
+			return;
+		}
+		if (wasOpen) {
+			wasOpen = false;
+			if (anchorEl && !document.activeElement) anchorEl.focus({ preventScroll: true });
+			else if (anchorEl && document.activeElement === document.body)
+				anchorEl.focus({ preventScroll: true });
 		}
 	});
 

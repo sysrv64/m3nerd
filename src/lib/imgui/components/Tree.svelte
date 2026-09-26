@@ -26,13 +26,14 @@
 	} = $props();
 
 	// svelte-ignore state_referenced_locally -- open set is intentionally seeded once from defaults
-	const open = $state(new Set<string>(defaultOpen));
+	let open = $state(new Set<string>(defaultOpen));
 
 	function activate(node: TreeNode) {
 		if (node.disabled) return;
 		if (node.children?.length) {
 			if (open.has(node.id)) open.delete(node.id);
 			else open.add(node.id);
+			open = new Set(open);
 			return;
 		}
 		onselect?.(node.id);

@@ -27,7 +27,7 @@ Material 3 Expressive component library for Svelte 5 — fast, adaptive, opinion
   | ------------ | --------------------------------------------------------------------------- |
   | Buttons      | Button, IconButton, FAB, ConnectedButtons                                    |
   | Containers   | Card, ListItem, Dialog, Menu, MenuItem, Snackbar, BottomSheet, SideSheet     |
-  | Forms        | TextField, Checkbox, Radio, Switch, Slider, Select, Chip, DateField          |
+   | Forms        | TextField, Checkbox, Radio, Switch, Slider, Select, Chip, DateField, DatePickerDocked |
   | Progress     | CircularProgress, LinearProgress, LoadingIndicator                           |
   | Navigation   | NavigationSuite, NavigationRail, NavigationBar, Tabs, Toolbar                |
   | Feedback     | Badge                                                                         |
@@ -56,6 +56,19 @@ Requires Svelte 5 (>= 5.46). ESM only.
 	<Button variant="filled">Subscribe</Button>
 </Card>
 ```
+
+## ImGUI
+
+Immediate-mode debug UI alongside the Material library:
+
+```svelte
+<script lang="ts">
+	import 'm3nerd/imgui/styles.css';
+	import { IgWindow, IgButton } from 'm3nerd/imgui';
+</script>
+```
+
+Live demo at `/imgui`.
 
 ## Adaptive modes
 

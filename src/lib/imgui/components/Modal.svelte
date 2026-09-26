@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
 	import type { Snippet } from 'svelte';
 
 	let {
@@ -26,6 +27,7 @@
 	} = $props();
 
 	let dialogEl = $state<HTMLDialogElement | null>(null);
+	let destroying = false;
 
 	$effect(() => {
 		const el = dialogEl;
@@ -41,8 +43,14 @@
 	}
 
 	function handleClose(e: Event) {
+		if (destroying) return;
 		open = false;
 		onclose?.(e);
+	}
+
+	function requestClose() {
+		if (dialogEl?.open) dialogEl.close();
+		else open = false;
 	}
 
 	function handleClick(e: MouseEvent) {
@@ -50,6 +58,11 @@
 		if (e.target !== dialogEl) return;
 		if (dismissible) open = false;
 	}
+
+	onDestroy(() => {
+		destroying = true;
+		if (dialogEl?.open) dialogEl.close();
+	});
 </script>
 
 <dialog
@@ -72,7 +85,7 @@
 					type="button"
 					class="ig-modal-close ig-focus"
 					aria-label="Close"
-					onclick={() => (open = false)}
+					onclick={requestClose}
 				>
 					×
 				</button>

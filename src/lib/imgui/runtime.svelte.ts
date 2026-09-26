@@ -29,3 +29,8 @@ export function igIsHover(id: IgId): boolean {
 export function igRuntime() {
 	return state;
 }
+
+if (typeof window !== 'undefined') {
+	window.addEventListener('pointerup', () => (state.activeId = null), { passive: true });
+	window.addEventListener('pointercancel', () => (state.activeId = null), { passive: true });
+}

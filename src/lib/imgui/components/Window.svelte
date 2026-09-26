@@ -39,12 +39,13 @@
 	}
 </script>
 
-<div
-	class="ig-window {glass ? 'ig-glass' : ''} {className}"
-	style:width={dim(width)}
-	style:height={dim(height)}
-	{...rest}
->
+{#if open}
+	<div
+		class="ig-window {glass ? 'ig-glass' : ''} {className}"
+		style:width={dim(width)}
+		style:height={dim(height)}
+		{...rest}
+	>
 	<div class="ig-titlebar">
 		{#if collapsible}
 			<button
@@ -69,7 +70,8 @@
 			{@render children?.()}
 		</div>
 	{/if}
-</div>
+	</div>
+{/if}
 
 <style>
 	.ig-window {
@@ -137,6 +139,9 @@
 		align-items: center;
 		gap: var(--ig-item-spacing-x);
 		flex-shrink: 0;
+		min-width: 0;
+		max-width: 100%;
+		overflow: hidden;
 	}
 
 	.ig-body {

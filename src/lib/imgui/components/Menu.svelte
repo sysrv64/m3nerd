@@ -22,10 +22,14 @@
 
 	let menuEl = $state<HTMLDivElement | null>(null);
 	let pos = $state.raw<{ top: number; left: number; maxHeight: number } | null>(null);
+	let prevFocus = $state<HTMLElement | null>(null);
 
 	function close(e?: Event) {
 		if (!open) return;
 		open = false;
+		if (prevFocus && !prevFocus.isConnected) prevFocus = null;
+		prevFocus?.focus({ preventScroll: true });
+		prevFocus = null;
 		onclose?.(e);
 	}
 
@@ -33,6 +37,7 @@
 		if (!open) return;
 		const el = menuEl;
 		if (!el) return;
+		prevFocus = document.activeElement as HTMLElement | null;
 		if (anchor) {
 			const placed = placeNear(
 				anchor.getBoundingClientRect(),
@@ -56,6 +61,7 @@
 			const target = e.target as Node | null;
 			if (!target) return;
 			if (menuEl?.contains(target)) return;
+			if (anchor?.contains(target)) return;
 			close();
 		}
 
@@ -76,7 +82,7 @@
 {#if open}
 	<div
 		bind:this={menuEl}
-		class="ig-menu ig-glass {placement.startsWith('top') ? 'top' : ''} {placement.endsWith(
+		class="ig-menu ig-glass {anchor ? '' : 'no-anchor'} {placement.startsWith('top') ? 'top' : ''} {placement.endsWith(
 			'end'
 		)
 			? 'end'
@@ -119,6 +125,11 @@
 
 	.ig-menu.top.end {
 		transform-origin: bottom right;
+	}
+
+	.ig-menu.no-anchor {
+		position: absolute;
+		inset: auto;
 	}
 
 	@keyframes ig-menu-in {

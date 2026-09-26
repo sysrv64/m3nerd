@@ -37,11 +37,13 @@ export function placeNear(
 		top = trigger.bottom + gap;
 		maxHeight = Math.max(120, spaceBelow);
 	} else {
-		top = Math.max(gap, trigger.top - gap - panel.height);
 		maxHeight = Math.max(120, spaceAbove);
 		top = trigger.top - gap - Math.min(panel.height, maxHeight);
 		if (top < gap) top = gap;
 	}
+
+	top = Math.min(Math.max(gap, top), Math.max(gap, viewport.height - gap));
+	maxHeight = Math.max(0, Math.min(maxHeight, viewport.height - top));
 
 	if (placement === 'bottom-end' || placement === 'top-end') {
 		left = trigger.right - panel.width;
@@ -51,7 +53,7 @@ export function placeNear(
 		left = trigger.left;
 	}
 
-	left = Math.min(Math.max(gap, left), viewport.width - panel.width - gap);
+	left = Math.min(Math.max(gap, left), Math.max(gap, viewport.width - panel.width - gap));
 
 	return { top, left, maxHeight };
 }

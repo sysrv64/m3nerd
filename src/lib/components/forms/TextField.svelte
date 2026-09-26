@@ -20,8 +20,6 @@ interface Props extends Omit<HTMLInputAttributes, 'class' | 'children' | 'value'
 	rows?: number;
 }
 
-let instanceCounter = 0;
-
 let {
 	variant = 'outlined',
 	multiline = false,
@@ -38,7 +36,7 @@ let {
 	...rest
 }: Props = $props();
 
-const uid = ++instanceCounter;
+const uid = $props.id();
 const fieldId = $derived(rest.id ?? `m3-tf-${uid}`);
 const supportId = $derived(`${fieldId}-support`);
 

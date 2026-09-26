@@ -22,8 +22,6 @@ interface Props extends Omit<HTMLButtonAttributes, 'class' | 'children' | 'value
 	class?: string;
 }
 
-let instanceCounter = 0;
-
 let {
 	value = $bindable(''),
 	options = [],
@@ -35,7 +33,7 @@ let {
 	...rest
 }: Props = $props();
 
-const uid = ++instanceCounter;
+const uid = $props.id();
 const listboxId = `m3-select-list-${uid}`;
 const optionId = (index: number) => `m3-select-opt-${uid}-${index}`;
 

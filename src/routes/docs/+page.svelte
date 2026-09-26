@@ -110,7 +110,7 @@
 	<h2>Usage</h2>
 	<p>Import the stylesheet once at your app root, then use components anywhere:</p>
 	<pre><code>&lt;script lang="ts"&gt;
-	import '../lib/styles.css';
+	import 'm3nerd/styles.css';
 	import &#123; Button, Card, TextField &#125; from 'm3nerd';
 &lt;/script&gt;
 
@@ -119,9 +119,8 @@
 	&lt;Button variant="filled" onclick=&#123;submit&#125;&gt;Subscribe&lt;/Button&gt;
 &lt;/Card&gt;</code></pre>
 	<p>
-		In this repository the styles are imported relatively (<code
-			>import '../lib/styles.css'</code
-		>) because <code>m3nerd/styles.css</code> only resolves from the published package.
+		The <code>m3nerd/styles.css</code> export resolves from the published package (see
+		<code>exports</code> in <code>package.json</code>).
 	</p>
 </section>
 

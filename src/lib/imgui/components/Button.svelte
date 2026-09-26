@@ -58,6 +58,7 @@
 	onpointerdown={handleDown}
 	onpointerup={handleUp}
 	onpointerupcapture={handleUp}
+	onpointercancel={handleUp}
 >
 	{#if arrow}
 		<span class="arrow" aria-hidden="true">{arrowGlyph}</span>

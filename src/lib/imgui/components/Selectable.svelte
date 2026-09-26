@@ -57,6 +57,7 @@
 	onpointerdown={handleDown}
 	onpointerup={handleUp}
 	onpointerupcapture={handleUp}
+	onpointercancel={handleUp}
 >
 	{@render children?.()}
 </button>

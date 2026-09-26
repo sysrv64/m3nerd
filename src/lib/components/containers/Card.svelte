@@ -32,7 +32,7 @@ const interactive = $derived(tag === 'button' || tag === 'a' || Boolean(onclick)
 	this={tag}
 	class={cn('m3-card', `v-${variant}`, interactive && 'interactive', interactive && 'm3-layer', className)}
 	{href}
-	onclick={tag === 'button' || tag === 'a' ? undefined : onclick}
+	onclick={onclick}
 	type={tag === 'button' ? 'button' : undefined}
 	{...rest}
 >

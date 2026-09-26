@@ -254,7 +254,7 @@
 						menuOpen = !menuOpen;
 					}}>File ▾</IgButton
 				>
-				<IgMenu open={menuOpen} anchor={menuAnchor} onclose={() => (menuOpen = false)}>
+				<IgMenu bind:open={menuOpen} anchor={menuAnchor} onclose={() => (menuOpen = false)}>
 					<IgMenuItem
 						onclick={() => {
 							menuOpen = false;
@@ -285,7 +285,7 @@
 		<p class="ig-section-desc">Dimmed overlay with confirm actions — irreversible ops live here.</p>
 		<div class="ig-stage">
 			<IgButton onclick={() => (modalOpen = true)}>Open modal</IgButton>
-			<IgModal open={modalOpen} title="Confirm quit" onclose={() => (modalOpen = false)}>
+			<IgModal bind:open={modalOpen} title="Confirm quit" onclose={() => (modalOpen = false)}>
 				<IgText>Unsaved changes will be lost. Quit anyway?</IgText>
 				{#snippet actions()}
 					<IgButton onclick={() => (modalOpen = false)}>Cancel</IgButton>

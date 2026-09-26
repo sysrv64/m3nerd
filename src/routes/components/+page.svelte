@@ -156,7 +156,6 @@
 				<tr>
 					<th>Component</th>
 					<th>Prop</th>
-					<th>Type</th>
 					<th>Default</th>
 					<th>Description</th>
 				</tr>
@@ -274,7 +273,7 @@
 		{
 			name: 'Button',
 			type: "'xs' | 's' | 'm' | 'l' | 'xl'",
-			def: "'m'",
+			def: "'s'",
 			desc: 'Size — Expressive heights 32 / 40 / 56 / 96 / 136px'
 		},
 		{
@@ -693,7 +692,7 @@
 		},
 		{
 			name: 'MenuItem',
-			type: 'children, onselect?, selected?',
+			type: 'children, onclick?, onselect?, selected?',
 			def: 'undefined',
 			desc: 'Row inside a menu; closes the menu on click'
 		},
@@ -706,7 +705,7 @@
 		{
 			name: 'SideSheet',
 			type: 'bind:open: boolean, title?: string, side?, modal?',
-			def: "false / 'end' / false",
+			def: "false / undefined / 'end' / false",
 			desc: 'Supplementary panel from the inline edge'
 		},
 		{

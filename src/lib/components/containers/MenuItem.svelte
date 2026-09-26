@@ -23,12 +23,14 @@
 		children,
 		class: className,
 		type = 'button',
+		onclick,
 		...rest
 	}: Props = $props();
 
 	const menu = getContext<{ close: () => void } | undefined>('m3-menu');
 
-	function handleClick(e: MouseEvent) {
+	function handleClick(e: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
+		(onclick as ((e: MouseEvent) => void) | undefined)?.(e);
 		onselect?.(e);
 		menu?.close();
 	}
@@ -40,8 +42,8 @@
 	{type}
 	{disabled}
 	data-selected={selected || undefined}
-	onclick={handleClick}
 	{...rest}
+	onclick={handleClick}
 >
 	{#if leading}
 		<span class="m3-menu-item__leading">{@render leading()}</span>

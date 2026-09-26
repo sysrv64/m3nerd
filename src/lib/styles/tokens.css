@@ -208,9 +208,15 @@
 	--m3-sys-space-4: var(--m3-sys-space-200);
 	--m3-sys-space-5: var(--m3-sys-space-250);
 	--m3-sys-space-6: var(--m3-sys-space-300);
+	--m3-sys-space-7: 28px;
 	--m3-sys-space-8: var(--m3-sys-space-400);
+	--m3-sys-space-9: var(--m3-sys-space-450);
 	--m3-sys-space-10: var(--m3-sys-space-500);
+	--m3-sys-space-11: 44px;
 	--m3-sys-space-12: var(--m3-sys-space-600);
+	--m3-sys-space-13: 52px;
+	--m3-sys-space-14: var(--m3-sys-space-700);
+	--m3-sys-space-15: 60px;
 	--m3-sys-space-16: var(--m3-sys-space-800);
 
 	/* ---- State layer opacities (official MWC spec) ---- */
@@ -226,6 +232,9 @@
 	--m3-control-height: calc(40px * var(--m3-density-scale));
 	--m3-touch-target: 48px;
 	--m3-row-height: calc(56px * var(--m3-density-scale));
+
+	/* Focus ring radius — follows the control's own corner shape */
+	--m3-focus-radius: var(--m3-sys-shape-small);
 
 	/* Outlined field/select floating-label punch-out — override to match host surface */
 	--m3-field-label-bg: var(--m3-sys-surface);

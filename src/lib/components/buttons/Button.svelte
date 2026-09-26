@@ -32,22 +32,32 @@ let {
 	type = undefined,
 	href = undefined,
 	disabled = false,
+	onclick,
 	...rest
 }: Props & { shape?: string } = $props();
 
 const isLink = $derived(typeof href === 'string' && href.length > 0);
 const tag = $derived(isLink ? 'a' : 'button');
+
+function handleClick(e: MouseEvent) {
+	if (isLink && disabled) {
+		e.preventDefault();
+		return;
+	}
+	onclick?.(e as MouseEvent & { currentTarget: EventTarget & HTMLButtonElement });
+}
 </script>
 
 <svelte:element
 	this={tag}
 	class={cn('m3-btn', 'm3-layer', `v-${variant}`, `s-${size}`, `sh-${shape}`, icon && 'icon-only', className)}
-	{href}
+	href={isLink && disabled ? undefined : href}
 	type={isLink ? undefined : (type ?? 'button')}
 	aria-disabled={isLink && disabled ? 'true' : undefined}
 	disabled={isLink ? undefined : disabled}
 	data-disabled={disabled || undefined}
 	{...rest}
+	onclick={handleClick}
 >
 	<span class="m3-btn__label">
 		{@render children?.()}
